@@ -6,4 +6,26 @@
 
 body {
     font-family: 'Inter';
+    background-color: rgb(17, 16, 16);
+}
+
+.plain {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+
+    h1 {
+        font-size: 160px;
+        color: rgb(255, 255, 255);
+
+        &:nth-child(1) {
+            transform: translateX(150px);
+        }
+        &:nth-child(2) {
+            transform: translateX(-150px);
+        }
+    }
 }

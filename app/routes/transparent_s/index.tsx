@@ -1,42 +1,49 @@
-import * as THREE from 'three'
-import { useRef, useState } from 'react';
-import { Canvas, useFrame, type ThreeElements } from '@react-three/fiber'
+import * as THREE from 'three';
+import { useRef } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { CameraControls, Center, Environment, MeshTransmissionMaterial, useGLTF } from '@react-three/drei';
 
 import './transparent.scss';
+import { useControls } from 'leva';
 
 export default function Transparent_S() {
     return (
-        <div>
-            <Canvas style={{ width: '100vw', height: '100vh' }}>
-                <ambientLight intensity={Math.PI / 2} />
-                <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
-                <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-                <Box position={[-1.2, 0, 0]} />
-                <Box position={[1.2, 0, 0]} />
+        <main>
+            <nav>
+
+            </nav>
+
+            <Canvas style={{ height: '100vh', width: '100vw' }}>
+                {/* We can drop the HTML inside, make it a 3d-transform and portal it to the dom container above */}
+                <directionalLight intensity={3} position={[0, 3, 2]} />
+                <CameraControls enabled />
+                <Environment preset='city' />
+                <S_Model />
             </Canvas>
-        </div>
+        </main>
     );
 }
 
-function Box(props: ThreeElements['mesh']) {
-    // This reference gives us direct access to the THREE.Mesh object
-    const ref = useRef<THREE.Mesh>(null!)
-    // Hold state for hovered and clicked events
-    const [hovered, hover] = useState(false)
-    const [clicked, click] = useState(false)
-    // Subscribe this component to the render-loop, rotate the mesh every frame
-    useFrame((state, delta) => (ref.current.rotation.x += delta))
-    // Return the view, these are regular Threejs elements expressed in JSX
+function S_Model() {
+    const meshRef = useRef<THREE.Mesh>(null)
+    const { nodes } = useGLTF("./assets/S.glb")
+    const materialProps = useControls({
+        thickness: { value: 0.2, min: 0, max: 3, step: 0.05 },
+        roughness: { value: 0, min: 0, max: 1, step: 0.1 },
+        transmission: {value: 1, min: 0, max: 1, step: 0.1},
+        ior: { value: 1.2, min: 0, max: 3, step: 0.1 },
+        chromaticAberration: { value: 0.02, min: 0, max: 1},
+        backside: { value: true},
+    })
+
     return (
-        <mesh
-            {...props}
-            ref={ref}
-            scale={clicked ? 1.5 : 1}
-            onClick={(event) => click(!clicked)}
-            onPointerOver={(event) => hover(true)}
-            onPointerOut={(event) => hover(false)}>
-            <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
-        </mesh>
+        <group ref={meshRef} scale={13}>
+            <Center>
+                {/* @ts-ignore */}
+                <mesh { ...nodes.Text }>
+                    <MeshTransmissionMaterial { ...materialProps } />
+                </mesh>
+            </Center>
+        </group>
     )
 }
