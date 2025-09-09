@@ -9,7 +9,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export const clientLoader = () => { 
-    return redirect("/transparent_s");
+    return redirect("/cell_one");
 };
 
 export default function Home() {
