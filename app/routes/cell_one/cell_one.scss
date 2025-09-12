@@ -8,3 +8,39 @@ body {
     font-family: 'Inter';
     // background-color: rgb(17, 16, 16);
 }
+
+.container {
+    height: 100vh !important;
+    width: 100vw !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-left: 1px solid red;
+    pointer-events: none;
+    
+    div {
+        // pointer-events: none !important;
+    }
+}
+
+.text-parent {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.text {
+    font-size: 350px;
+}
+
+.text-parent button {
+    font-size: 20px;
+    padding: 1rem 3rem;
+    margin-left: 20px;
+    background-color: transparent;
+
+    &:hover {
+        background-color: grey;
+        cursor: pointer;
+    }
+}
