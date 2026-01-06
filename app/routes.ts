@@ -2,5 +2,7 @@ import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [
     index("routes/home.tsx"),
-    route("mood-switch", "routes/mood-switch/home.tsx")
+    route("billie", "routes/billie.tsx"),
+    route("dashboard", "routes/dashboard.tsx"),
+    route("dashboardtw", "routes/dashboardtw.tsx")
 ] satisfies RouteConfig;

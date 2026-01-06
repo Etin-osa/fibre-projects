@@ -1,0 +1,352 @@
+@use "mixin";
+
+// --- Variables ---
+$dark-bg: #202022;
+$dark-sidebar: #161618;
+$dark-card: #2c2c2c;
+$dark-border: #333;
+$text-light: #f5f5f5;
+$text-muted: #aaa;
+$accent-color: #2a2a2c; // Indigo-500 equivalent
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-color: $dark-bg; 
+    color: $text-light;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+
+    // --- Sidebar ---
+    .sidebar {
+        width: 280px;
+        background-color: $dark-sidebar;
+        border-right: 1px solid $dark-border;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        position: relative;
+        flex-shrink: 0;
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-weight: bold;
+                font-size: 1.2rem;
+                
+                svg {
+                    color: $accent-color;
+                }
+            }
+
+            .profile-pic {
+                width: 32px;
+                height: 32px;
+                background-color: #444;
+                border-radius: 50%;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1; 
+            overflow-y: auto;
+        }
+
+         .sidebar-section {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid $dark-border;
+
+            &:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-item {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 10px 12px;
+                border-radius: 8px;
+                cursor: pointer;
+                color: $text-muted;
+                transition: background 0.2s, color 0.2s;
+
+                svg {
+                    color: $text-muted; // Icons default to muted
+                }
+
+                &:hover {
+                    background-color: rgba(255,255,255,0.05);
+                    color: $text-light;
+                    svg { color: $text-light; }
+                }
+
+                &.active {
+                    background-color: $accent-color;
+                    color: $text-light;
+                    font-weight: 500;
+                    svg { color: $text-light; }
+                }
+
+                span {
+                    font-size: 0.95rem;
+                }
+            }
+        }
+
+        .upgrade-card {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background-color: $accent-color; 
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+
+            .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+                opacity: 0.8;
+                &:hover { opacity: 1; }
+            }
+
+            .promo-image {
+                width: 80px;
+                height: 80px;
+                background-color: rgba(255,255,255,0.2);
+                border-radius: 50%;
+                margin: 10px auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            h4 {
+                margin: 5px 0;
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 0.8rem;
+                opacity: 0.9;
+                margin-bottom: 15px;
+                color: rgba(255,255,255,0.9);
+            }
+
+            button {
+                width: 100%;
+                padding: 8px;
+                border: none;
+                background-color: white;
+                color: $accent-color;
+                border-radius: 6px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: transform 0.1s;
+                
+                &:hover {
+                    transform: scale(1.02);
+                }
+            }
+        }
+    }
+
+    // --- Main Content ---
+    .main-content {
+        flex: 1;
+        padding: 30px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        // 1. Header Section (Dashboard | Date & Users)
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .header-left {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                
+                h1 {
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                    margin: 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+            }
+
+            .header-right {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                .last-updated {
+                    color: $text-muted;
+                    font-size: 0.9rem;
+                }
+
+                .user-stack {
+                    display: flex;
+                    .user-avatar {
+                        width: 30px;
+                        height: 30px;
+                        background-color: #ccc;
+                        border-radius: 50%;
+                        border: 2px solid $dark-bg;
+                        margin-left: -10px;
+                        &:first-child { margin-left: 0; }
+                    }
+                }
+
+                .theme-toggle {
+                    background: none;
+                    border: 1px solid $dark-border;
+                    padding: 8px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    color: $text-light;
+                    &:hover { background-color: rgba(255,255,255,0.05); }
+                }
+            }
+        }
+
+        // 2. Title Section (Title/Sub | Buttons)
+        .title-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            .text-group {
+                h2 { margin: 0 0 5px 0; font-size: 1.5rem; }
+                p { margin: 0; color: $text-muted; }
+            }
+
+            .action-buttons {
+                display: flex;
+                gap: 10px;
+
+                button {
+                    padding: 10px 20px;
+                    border: 1px solid $dark-border;
+                    background: $dark-card;
+                    color: $text-light;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: 500;
+
+                    &.primary {
+                        background-color: $text-light;
+                        color: $dark-bg;
+                        border-color: $text-light;
+                    }
+                }
+            }
+        }
+
+        // 3. Four Sections Grid
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+
+            .stat-card {
+                background: $dark-card;
+                padding: 20px;
+                border-radius: 12px;
+                border: 1px solid $dark-border;
+                min-height: 120px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .stat-icon {
+                    width: 40px;
+                    height: 40px;
+                    background-color: rgba(255,255,255,0.1);
+                    color: $text-light;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 10px;
+                }
+
+                .stat-value { font-size: 1.5rem; font-weight: bold; }
+                .stat-label { color: $text-muted; font-size: 0.9rem; }
+            }
+        }
+
+        // 4. Two Sections Grid (Left Larger)
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+
+            .large-card {
+                background: $dark-card;
+                padding: 24px;
+                border-radius: 12px;
+                border: 1px solid $dark-border;
+                min-height: 300px;
+                
+                h3 { margin-top: 0; }
+            }
+
+            .side-card {
+                background: $dark-card;
+                padding: 24px;
+                border-radius: 12px;
+                border: 1px solid $dark-border;
+                min-height: 300px;
+
+                h3 { margin-top: 0; }
+            }
+        }
+
+        // 5. Bottom Section
+        .bottom-section {
+            background: $dark-card;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid $dark-border;
+            min-height: 200px;
+            margin-bottom: 20px;
+
+            h3 { margin-top: 0; }
+            
+            table {
+                thead tr {
+                    color: $text-muted !important;
+                    border-bottom: 1px solid $dark-border !important;
+                }
+            }
+        }
+    }
+}
