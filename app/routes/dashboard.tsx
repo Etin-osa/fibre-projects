@@ -28,6 +28,8 @@ export function meta({}: Route.MetaArgs) {
     ];
 }
 
+// TODO: Add shadow to every card in dashboard section
+
 export default function Dashboard() {
     return (
         <div className="dashboard-container">
@@ -64,8 +66,6 @@ export default function Dashboard() {
                             <span>Notifications</span>
                         </div>
                     </div>
-
-                    <div style={{ padding: "0 10px 10px 10px", borderBottom: "1px solid #eee", marginBottom: "10px" }}></div>
 
                     {/* 1.3 Main Navigation */}
                     <div className="sidebar-section">
@@ -172,16 +172,16 @@ export default function Dashboard() {
                 <div className="charts-grid">
                     <div className="large-card">
                         <h3>Project Activity</h3>
-                        <div style={{height: "200px", background: "#f9fafb", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", color: "#999"}}>
+                        <div style={{height: "200px", background: "#2c2c2c", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", color: "#999"}}>
                             Chart Placeholder
                         </div>
                     </div>
                     <div className="side-card">
                         <h3>Today's Schedule</h3>
                         <div style={{marginTop: "20px", display: "flex", flexDirection: "column", gap: "10px"}}>
-                            <div style={{padding: "10px", background: "#f3f4f6", borderRadius: "6px"}}>09:00 AM - Team Meeting</div>
-                            <div style={{padding: "10px", background: "#f3f4f6", borderRadius: "6px"}}>11:00 AM - Design Review</div>
-                            <div style={{padding: "10px", background: "#f3f4f6", borderRadius: "6px"}}>02:00 PM - Client Call</div>
+                            <div style={{padding: "10px", background: "#2c2c2c", borderRadius: "6px"}}>09:00 AM - Team Meeting</div>
+                            <div style={{padding: "10px", background: "#2c2c2c", borderRadius: "6px"}}>11:00 AM - Design Review</div>
+                            <div style={{padding: "10px", background: "#2c2c2c", borderRadius: "6px"}}>02:00 PM - Client Call</div>
                         </div>
                     </div>
                 </div>
