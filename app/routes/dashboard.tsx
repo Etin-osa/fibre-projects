@@ -8,7 +8,6 @@ import {
     Inbox,
     Layout,
     LayoutDashboard,
-    Moon,
     PieChart,
     Search,
     Settings,
@@ -20,6 +19,8 @@ import {
     Users
 } from "lucide-react";
 import type { Route } from "./+types/dashboard";
+import Card from "../components/Card";
+import ThemeToggle from "../ThemeToggle";
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -124,9 +125,7 @@ export default function Dashboard() {
                             <img className="user-avatar" src="https://placehold.co/40" alt="u2" />
                             <img className="user-avatar" src="https://placehold.co/40" alt="u3" />
                         </div>
-                        <button className="theme-toggle">
-                            <Moon size={20} />
-                        </button>
+                        <ThemeToggle />
                     </div>
                 </header>
 
@@ -144,74 +143,74 @@ export default function Dashboard() {
 
                 {/* 2.3 Four Stats Sections */}
                 <div className="stats-grid">
-                    <div className="stat-card">
+                    <Card hoverable className="stat-card">
                         <div className="stat-icon"><CheckCircle2 /></div>
                         <div className="stat-value">24</div>
                         <div className="stat-label">Tasks Completed</div>
-                    </div>
-                    <div className="stat-card">
-                        <div className="stat-icon" style={{color: "#3b82f6", backgroundColor: "#eff6ff"}}><TrendingUp /></div>
+                    </Card>
+                    <Card hoverable className="stat-card">
+                        <div className="stat-icon" style={{color: "#3b82f6", backgroundColor: "#1e3a8a"}}><TrendingUp /></div>
                         <div className="stat-value">12</div>
                         <div className="stat-label">Projects Active</div>
-                    </div>
-                    <div className="stat-card">
-                        <div className="stat-icon" style={{color: "#eab308", backgroundColor: "#fef9c3"}}><Clock /></div>
+                    </Card>
+                    <Card hoverable className="stat-card">
+                        <div className="stat-icon" style={{color: "#eab308", backgroundColor: "#713f12"}}><Clock /></div>
                         <div className="stat-value">8</div>
                         <div className="stat-label">Pending Review</div>
-                    </div>
-                    <div className="stat-card">
-                        <div className="stat-icon" style={{color: "#ef4444", backgroundColor: "#fef2f2"}}><Users /></div>
+                    </Card>
+                    <Card hoverable className="stat-card">
+                        <div className="stat-icon" style={{color: "#ef4444", backgroundColor: "#7f1d1d"}}><Users /></div>
                         <div className="stat-value">5</div>
                         <div className="stat-label">Team Members</div>
-                    </div>
+                    </Card>
                 </div>
 
                 {/* 2.4 Two Split Sections */}
                 <div className="charts-grid">
-                    <div className="large-card">
+                    <Card className="large-card">
                         <h3>Project Activity</h3>
-                        <div style={{height: "200px", background: "#2c2c2c", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", color: "#999"}}>
+                        <div style={{height: "200px", background: "#0f0f14", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", color: "#666"}}>
                             Chart Placeholder
                         </div>
-                    </div>
-                    <div className="side-card">
+                    </Card>
+                    <Card className="side-card">
                         <h3>Today's Schedule</h3>
-                        <div style={{marginTop: "20px", display: "flex", flexDirection: "column", gap: "10px"}}>
-                            <div style={{padding: "10px", background: "#2c2c2c", borderRadius: "6px"}}>09:00 AM - Team Meeting</div>
-                            <div style={{padding: "10px", background: "#2c2c2c", borderRadius: "6px"}}>11:00 AM - Design Review</div>
-                            <div style={{padding: "10px", background: "#2c2c2c", borderRadius: "6px"}}>02:00 PM - Client Call</div>
+                        <div style={{marginTop: "20px", display: "flex", flexDirection: "column", gap: "12px"}}>
+                            <div className="schedule-item">09:00 AM - Team Meeting</div>
+                            <div className="schedule-item">11:00 AM - Design Review</div>
+                            <div className="schedule-item">02:00 PM - Client Call</div>
                         </div>
-                    </div>
+                    </Card>
                 </div>
 
                 {/* 2.5 Bottom Section */}
-                <div className="bottom-section">
+                <Card className="bottom-section">
                     <h3>Recent Tasks</h3>
-                    <table style={{width: "100%", borderCollapse: "collapse", marginTop: "15px"}}>
+                    <table className="tasks-table">
                         <thead>
-                            <tr style={{textAlign: "left", color: "#666", borderBottom: "1px solid #eee"}}>
-                                <th style={{padding: "10px"}}>Task Name</th>
-                                <th style={{padding: "10px"}}>Status</th>
-                                <th style={{padding: "10px"}}>Assignee</th>
-                                <th style={{padding: "10px"}}>Due Date</th>
+                            <tr>
+                                <th>Task Name</th>
+                                <th>Status</th>
+                                <th>Assignee</th>
+                                <th>Due Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style={{padding: "15px 10px"}}>Redesign Homepage</td>
-                                <td style={{padding: "15px 10px"}}><span style={{background: "#dcfce7", color: "#166534", padding: "4px 8px", borderRadius: "12px", fontSize: "0.8rem"}}>Completed</span></td>
-                                <td style={{padding: "15px 10px"}}>Alex M.</td>
-                                <td style={{padding: "15px 10px"}}>Jan 10, 2026</td>
+                                <td>Redesign Homepage</td>
+                                <td><span className="status-badge status-completed">Completed</span></td>
+                                <td>Alex M.</td>
+                                <td>Jan 10, 2026</td>
                             </tr>
                             <tr>
-                                <td style={{padding: "15px 10px"}}>Fix Navigation Bug</td>
-                                <td style={{padding: "15px 10px"}}><span style={{background: "#fef9c3", color: "#854d0e", padding: "4px 8px", borderRadius: "12px", fontSize: "0.8rem"}}>In Progress</span></td>
-                                <td style={{padding: "15px 10px"}}>Sarah J.</td>
-                                <td style={{padding: "15px 10px"}}>Jan 12, 2026</td>
+                                <td>Fix Navigation Bug</td>
+                                <td><span className="status-badge status-progress">In Progress</span></td>
+                                <td>Sarah J.</td>
+                                <td>Jan 12, 2026</td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </Card>
             </main>
         </div>
     );
