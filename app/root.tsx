@@ -6,7 +6,9 @@ import {
     Scripts,
     ScrollRestoration,
 } from "react-router";
-import './styles/global.css';
+import './styles/global.scss';
+import { ThemeProvider } from "./ThemeContext";
+import ThemeToggle from "./ThemeToggle";
 
 import type { Route } from "./+types/root";
 
@@ -33,7 +35,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <Links />
             </head>
             <body>
-                {children}
+                <ThemeProvider>
+                    <div style={{ position: 'fixed', top: '1rem', right: '1rem', zIndex: 9999 }}>
+                        <ThemeToggle />
+                    </div>
+                    {children}
+                </ThemeProvider>
                 <ScrollRestoration />
                 <Scripts />
             </body>
@@ -61,7 +68,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     }
 
     return (
-        <main style={{ color: 'white'}}>
+        <main className="container">
             <h1>{message}</h1>
             <p>{details}</p>
             {stack && (<pre><code>{stack}</code></pre>)}
