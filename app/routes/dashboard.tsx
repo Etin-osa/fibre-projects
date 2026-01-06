@@ -28,8 +28,6 @@ export function meta({}: Route.MetaArgs) {
     ];
 }
 
-// TODO: Add shadow to every card in dashboard section
-
 export default function Dashboard() {
     return (
         <div className="dashboard-container">
