@@ -8,7 +8,6 @@ import {
 } from "react-router";
 import './styles/global.scss';
 import { ThemeProvider } from "./ThemeContext";
-import ThemeToggle from "./ThemeToggle";
 
 import type { Route } from "./+types/root";
 
@@ -36,9 +35,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </head>
             <body>
                 <ThemeProvider>
-                    <div style={{ position: 'fixed', top: '1rem', right: '1rem', zIndex: 9999 }}>
-                        <ThemeToggle />
-                    </div>
                     {children}
                 </ThemeProvider>
                 <ScrollRestoration />
