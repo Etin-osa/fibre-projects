@@ -18,11 +18,10 @@ import {
     TrendingUp,
     Users
 } from "lucide-react";
-import type { Route } from "./+types/dashboard";
 import Card from "../components/Card";
 import ThemeToggle from "../ThemeToggle";
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
     return [
         { title: "Taskplus Dashboard" },
         { name: "description", content: "Manage your tasks and projects" },
