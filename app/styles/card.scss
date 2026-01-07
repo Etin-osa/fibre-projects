@@ -1,7 +1,7 @@
 // Premium Dark Theme Card Component
-$card-bg: #1a1a1f;
-$card-border: #2a2a35;
-$card-shadow: rgba(0, 0, 0, 0.5);
+$card-bg: #252527;
+$card-border: #373739;
+$card-shadow: rgba(0, 0, 0, 0.219);
 $card-hover-shadow: rgba(0, 0, 0, 0.7);
 
 .card {
@@ -10,7 +10,7 @@ $card-hover-shadow: rgba(0, 0, 0, 0.7);
     border-radius: 16px;
     padding: 24px;
     box-shadow: 
-        0 4px 6px -1px $card-shadow,
+        0 4px 15px -1px $card-shadow,
         0 2px 4px -2px $card-shadow;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
