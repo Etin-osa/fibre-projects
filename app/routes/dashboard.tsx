@@ -16,15 +16,7 @@ import {
     CheckCircle2,
     Clock,
     TrendingUp,
-    Users,
-    FileDown,
-    Plus,
-    FileText,
-    FileCheck,
-    FileX,
-    File,
-    SlidersHorizontal,
-    ChevronDown
+    Users
 } from "lucide-react";
 import Card from "../components/Card";
 import ThemeToggle from "../ThemeToggle";
@@ -120,393 +112,254 @@ export default function Dashboard() {
 
             {/* 2. Main Content Area */}
             <main className="main-content">
-                {/* 1. Dashboard Header */}
-                <header className="dashboard-header">
+                {/* 2.1 Header Section */}
+                <header className="content-header">
                     <div className="header-left">
-                        <LayoutDashboard size={20} />
-                        <span>Dashboard</span>
+                        <h1>Dashboard</h1>
                     </div>
                     <div className="header-right">
-                        <span>Last updated Jan 7, 2026</span>
-                        <div className="profile-group">
-                            <div className="profile-placeholder"></div>
-                            <div className="profile-placeholder"></div>
-                            <div className="profile-placeholder"></div>
+                        <div className="profile-info">
+                            <img className="profile-avatar" src="https://i.pravatar.cc/80" alt="John Anderson" />
+                            <div className="profile-details">
+                                <span className="profile-name">John Anderson</span>
+                                <span className="profile-role">Product Manager</span>
+                            </div>
                         </div>
                         <ThemeToggle />
                     </div>
                 </header>
 
-                {/* 2. Welcome Section */}
-                <div className="dashboard-welcome">
-                    <div className="welcome-text">
-                        <h1>Welcome back, Frederick! 👋</h1>
-                        <p><strong>4</strong> Tasks Due Today, <strong>2</strong> Overdue Tasks, <strong>8</strong> Upcoming Deadlines (This Week)</p>
-                    </div>
-                    <div className="welcome-actions">
-                        <button className="export-btn">
-                            <FileDown size={20} />
-                            Export
-                        </button>
-                        <button className="new-project-btn">
-                            <Plus size={20} />
-                            New Project
-                        </button>
-                    </div>
+                {/* 2.2 Welcome Section */}
+                <div className="welcome-section">
+                    <h2>Welcome back, John!</h2>
+                    <p>Here's what's happening with your projects today.</p>
                 </div>
 
-                {/* 3. Stats Cards */}
+                {/* 2.3 Four Stats Cards */}
                 <div className="stats-grid">
-                    <Card className="stat-card">
-                        <div className="stat-info">
-                            <div className="stat-title">Total Projects</div>
-                            <div className="stat-number">15</div>
-                            <div className="stat-change"><strong>+5</strong> vs last month</div>
+                    <Card hoverable className="stat-card">
+                        <div className="stat-header">
+                            <div className="stat-icon green"><CheckCircle2 /></div>
+                            <span className="stat-change positive">+12%</span>
                         </div>
-                        <div className="stat-icon">
-                            <Folder size={50} />
-                        </div>
+                        <div className="stat-value">156</div>
+                        <div className="stat-label">Total Projects</div>
+                        <div className="stat-subtext">32 active this month</div>
                     </Card>
-                    <Card className="stat-card">
-                        <div className="stat-info">
-                            <div className="stat-title">Total Tasks</div>
-                            <div className="stat-number">10</div>
-                            <div className="stat-change"><strong>+2</strong> vs last month</div>
+                    <Card hoverable className="stat-card">
+                        <div className="stat-header">
+                            <div className="stat-icon blue"><TrendingUp /></div>
+                            <span className="stat-change positive">+8%</span>
                         </div>
-                        <div className="stat-icon">
-                            <FileText size={50} />
-                        </div>
+                        <div className="stat-value">89%</div>
+                        <div className="stat-label">Completion Rate</div>
+                        <div className="stat-subtext">Above target by 9%</div>
                     </Card>
-                    <Card className="stat-card">
-                        <div className="stat-info">
-                            <div className="stat-title">In Reviews</div>
-                            <div className="stat-number">23</div>
-                            <div className="stat-change"><strong>+12</strong> vs last month</div>
+                    <Card hoverable className="stat-card">
+                        <div className="stat-header">
+                            <div className="stat-icon yellow"><Clock /></div>
+                            <span className="stat-change negative">-3%</span>
                         </div>
-                        <div className="stat-icon">
-                            <FileCheck size={50} />
-                        </div>
+                        <div className="stat-value">24</div>
+                        <div className="stat-label">Pending Tasks</div>
+                        <div className="stat-subtext">12 due this week</div>
                     </Card>
-                    <Card className="stat-card">
-                        <div className="stat-info">
-                            <div className="stat-title">Completed Tasks</div>
-                            <div className="stat-number">50</div>
-                            <div className="stat-change"><strong>+15</strong> vs last month</div>
+                    <Card hoverable className="stat-card">
+                        <div className="stat-header">
+                            <div className="stat-icon purple"><Users /></div>
+                            <span className="stat-change positive">+2</span>
                         </div>
-                        <div className="stat-icon">
-                            <CheckCircle2 size={50} />
-                        </div>
+                        <div className="stat-value">48</div>
+                        <div className="stat-label">Team Members</div>
+                        <div className="stat-subtext">8 teams total</div>
                     </Card>
                 </div>
 
-                {/* 4. Tasks & Performance Grid */}
-                <div className="main-grid">
-                    {/* Today's Tasks Card */}
-                    <Card className="tasks-card">
+                {/* 2.4 Performance Chart Section */}
+                <div className="charts-grid">
+                    <Card className="chart-card">
                         <div className="card-header">
-                            <h3>Today's Tasks</h3>
-                            <div className="header-actions">
-                                <div className="search-bar">
-                                    <Search size={20} />
-                                    <input type="text" placeholder="Search here…" />
-                                </div>
-                                <button className="filter-btn">
-                                    <SlidersHorizontal size={20} />
-                                    Filter
-                                </button>
+                            <h3>Performance Overview</h3>
+                            <div className="chart-tabs">
+                                <button className="tab active">Week</button>
+                                <button className="tab">Month</button>
+                                <button className="tab">Year</button>
                             </div>
                         </div>
-                        <div className="custom-table">
-                            <div className="table-header">
-                                <div>Task Name</div>
-                                <div>Project</div>
-                                <div>Due</div>
+                        <div className="bar-chart">
+                            <div className="chart-bar" style={{height: '60%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Mon</span>
                             </div>
-                            <div className="table-row">
-                                <div className="task-cell">
-                                    <File size={20} />
-                                    <span>Prepare Q2 report</span>
-                                </div>
-                                <div className="project-cell">
-                                    <div className="folder-icon">
-                                        <Folder size={14} />
-                                    </div>
-                                    <span>Fintech Project</span>
-                                </div>
-                                <div className="date-cell">12 Mar 2025</div>
+                            <div className="chart-bar" style={{height: '75%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Tue</span>
                             </div>
-                            <div className="table-row">
-                                <div className="task-cell">
-                                    <File size={20} />
-                                    <span>Design mockups</span>
-                                </div>
-                                <div className="project-cell">
-                                    <div className="folder-icon">
-                                        <Folder size={14} />
-                                    </div>
-                                    <span>E-commerce Platform</span>
-                                </div>
-                                <div className="date-cell">15 Mar 2025</div>
+                            <div className="chart-bar" style={{height: '45%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Wed</span>
                             </div>
-                            <div className="table-row">
-                                <div className="task-cell">
-                                    <File size={20} />
-                                    <span>Code review</span>
-                                </div>
-                                <div className="project-cell">
-                                    <div className="folder-icon">
-                                        <Folder size={14} />
-                                    </div>
-                                    <span>Mobile App Redesign</span>
-                                </div>
-                                <div className="date-cell">18 Mar 2025</div>
+                            <div className="chart-bar" style={{height: '85%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Thu</span>
                             </div>
-                            <div className="table-row">
-                                <div className="task-cell">
-                                    <File size={20} />
-                                    <span>Client meeting</span>
-                                </div>
-                                <div className="project-cell">
-                                    <div className="folder-icon">
-                                        <Folder size={14} />
-                                    </div>
-                                    <span>Marketing Campaign</span>
-                                </div>
-                                <div className="date-cell">20 Mar 2025</div>
+                            <div className="chart-bar" style={{height: '70%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Fri</span>
                             </div>
-                            <div className="table-row">
-                                <div className="task-cell">
-                                    <File size={20} />
-                                    <span>Update documentation</span>
-                                </div>
-                                <div className="project-cell">
-                                    <div className="folder-icon">
-                                        <Folder size={14} />
-                                    </div>
-                                    <span>Backend Migration</span>
-                                </div>
-                                <div className="date-cell">22 Mar 2025</div>
+                            <div className="chart-bar" style={{height: '55%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Sat</span>
+                            </div>
+                            <div className="chart-bar" style={{height: '40%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Sun</span>
                             </div>
                         </div>
                     </Card>
-
-                    {/* Performance Card */}
-                    <Card className="performance-card">
-                        <div className="performance-header">
-                            <h3>Performance</h3>
-                            <select>
-                                <option>This Week</option>
-                                <option>This Month</option>
-                            </select>
-                        </div>
-                        <div className="performance-stats">
-                            <div className="performance-number">86%</div>
-                            <div className="performance-change">
-                                <span className="change-value">+15%</span>
-                                <span className="change-period"> vs last week</span>
+                    <Card className="side-card">
+                        <h3>Team Activity</h3>
+                        <div className="activity-list">
+                            <div className="activity-item">
+                                <img src="https://i.pravatar.cc/40?img=1" alt="Sarah" />
+                                <div className="activity-info">
+                                    <span className="activity-name">Sarah Chen</span>
+                                    <span className="activity-action">Completed 3 tasks</span>
+                                </div>
+                                <span className="activity-time">2h ago</span>
                             </div>
-                        </div>
-                        <div className="chart-placeholder">
-                            Bar Chart Placeholder
+                            <div className="activity-item">
+                                <img src="https://i.pravatar.cc/40?img=2" alt="Mike" />
+                                <div className="activity-info">
+                                    <span className="activity-name">Mike Johnson</span>
+                                    <span className="activity-action">Updated project status</span>
+                                </div>
+                                <span className="activity-time">4h ago</span>
+                            </div>
+                            <div className="activity-item">
+                                <img src="https://i.pravatar.cc/40?img=3" alt="Emily" />
+                                <div className="activity-info">
+                                    <span className="activity-name">Emily Davis</span>
+                                    <span className="activity-action">Created new milestone</span>
+                                </div>
+                                <span className="activity-time">5h ago</span>
+                            </div>
+                            <div className="activity-item">
+                                <img src="https://i.pravatar.cc/40?img=4" alt="Alex" />
+                                <div className="activity-info">
+                                    <span className="activity-name">Alex Martinez</span>
+                                    <span className="activity-action">Uploaded 5 files</span>
+                                </div>
+                                <span className="activity-time">6h ago</span>
+                            </div>
                         </div>
                     </Card>
                 </div>
 
-                {/* 5. Projects List */}
-                <Card className="projects-section">
-                    <div className="card-header">
-                        <h3>List Project</h3>
-                        <div className="header-actions">
-                            <div className="search-bar">
-                                <Search size={20} />
-                                <input type="text" placeholder="Search here…" />
-                            </div>
-                            <button className="filter-btn">
-                                <SlidersHorizontal size={20} />
-                                Filter
-                            </button>
-                        </div>
+                {/* 2.5 Recent Projects Table */}
+                <Card className="bottom-section">
+                    <div className="table-header">
+                        <h3>Recent Projects</h3>
+                        <button className="view-all-btn">View All</button>
                     </div>
-                    <div className="custom-table">
-                        <div className="table-header">
-                            <div>Project Name</div>
-                            <div>Status</div>
-                            <div>Progress</div>
-                            <div>Total Tasks</div>
-                            <div>Due Date</div>
-                            <div>Owner</div>
-                        </div>
-                        <div className="table-row">
-                            <div className="project-name-cell">
-                                <div className="folder-icon">
-                                    <Folder size={14} />
-                                </div>
-                                <span>Fintech Project</span>
-                            </div>
-                            <div className="status-cell">
-                                <span className="status-badge in-progress">In Progress</span>
-                            </div>
-                            <div className="progress-cell">
-                                <div className="progress-bar-container">
-                                    <div className="progress-segment filled in-progress"></div>
-                                    <div className="progress-segment filled in-progress"></div>
-                                    <div className="progress-segment filled in-progress"></div>
-                                    <div className="progress-segment filled in-progress"></div>
-                                    <div className="progress-segment filled in-progress"></div>
-                                    <div className="progress-segment filled in-progress"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                </div>
-                            </div>
-                            <div className="tasks-cell">
-                                <span className="completed-count">14</span>
-                                <span className="total-count"> / 20</span>
-                            </div>
-                            <div className="date-cell">12 Mar 2024</div>
-                            <div className="owner-cell">
-                                <div className="owner-avatar"></div>
-                                <span>Sarah Chen</span>
-                            </div>
-                        </div>
-                        <div className="table-row">
-                            <div className="project-name-cell">
-                                <div className="folder-icon">
-                                    <Folder size={14} />
-                                </div>
-                                <span>E-commerce Platform</span>
-                            </div>
-                            <div className="status-cell">
-                                <span className="status-badge completed">Completed</span>
-                            </div>
-                            <div className="progress-cell">
-                                <div className="progress-bar-container">
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                </div>
-                            </div>
-                            <div className="tasks-cell">
-                                <span className="completed-count">18</span>
-                                <span className="total-count"> / 22</span>
-                            </div>
-                            <div className="date-cell">15 Mar 2024</div>
-                            <div className="owner-cell">
-                                <div className="owner-avatar"></div>
-                                <span>Mike Johnson</span>
-                            </div>
-                        </div>
-                        <div className="table-row">
-                            <div className="project-name-cell">
-                                <div className="folder-icon">
-                                    <Folder size={14} />
-                                </div>
-                                <span>Mobile App Redesign</span>
-                            </div>
-                            <div className="status-cell">
-                                <span className="status-badge on-hold">On Hold</span>
-                            </div>
-                            <div className="progress-cell">
-                                <div className="progress-bar-container">
-                                    <div className="progress-segment filled on-hold"></div>
-                                    <div className="progress-segment filled on-hold"></div>
-                                    <div className="progress-segment filled on-hold"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                </div>
-                            </div>
-                            <div className="tasks-cell">
-                                <span className="completed-count">6</span>
-                                <span className="total-count"> / 15</span>
-                            </div>
-                            <div className="date-cell">20 Mar 2024</div>
-                            <div className="owner-cell">
-                                <div className="owner-avatar"></div>
-                                <span>Emily Davis</span>
-                            </div>
-                        </div>
-                        <div className="table-row">
-                            <div className="project-name-cell">
-                                <div className="folder-icon">
-                                    <Folder size={14} />
-                                </div>
-                                <span>Marketing Campaign</span>
-                            </div>
-                            <div className="status-cell">
-                                <span className="status-badge in-progress">In Progress</span>
-                            </div>
-                            <div className="progress-cell">
-                                <div className="progress-bar-container">
-                                    <div className="progress-segment filled in-progress"></div>
-                                    <div className="progress-segment filled in-progress"></div>
-                                    <div className="progress-segment filled in-progress"></div>
-                                    <div className="progress-segment filled in-progress"></div>
-                                    <div className="progress-segment filled in-progress"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                    <div className="progress-segment"></div>
-                                </div>
-                            </div>
-                            <div className="tasks-cell">
-                                <span className="completed-count">10</span>
-                                <span className="total-count"> / 18</span>
-                            </div>
-                            <div className="date-cell">25 Mar 2024</div>
-                            <div className="owner-cell">
-                                <div className="owner-avatar"></div>
-                                <span>Alex Martinez</span>
-                            </div>
-                        </div>
-                        <div className="table-row">
-                            <div className="project-name-cell">
-                                <div className="folder-icon">
-                                    <Folder size={14} />
-                                </div>
-                                <span>Backend Migration</span>
-                            </div>
-                            <div className="status-cell">
-                                <span className="status-badge completed">Completed</span>
-                            </div>
-                            <div className="progress-cell">
-                                <div className="progress-bar-container">
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                    <div className="progress-segment filled completed"></div>
-                                </div>
-                            </div>
-                            <div className="tasks-cell">
-                                <span className="completed-count">25</span>
-                                <span className="total-count"> / 25</span>
-                            </div>
-                            <div className="date-cell">08 Mar 2024</div>
-                            <div className="owner-cell">
-                                <div className="owner-avatar"></div>
-                                <span>Sarah Chen</span>
-                            </div>
-                        </div>
-                    </div>
+                    <table className="projects-table">
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                                <th>Team Lead</th>
+                                <th>Progress</th>
+                                <th>Status</th>
+                                <th>Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div className="project-name">
+                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #6366f1, #818cf8)'}}>W</div>
+                                        <span>Website Redesign</span>
+                                    </div>
+                                </td>
+                                <td>Sarah Chen</td>
+                                <td>
+                                    <div className="progress-bar-container">
+                                        <div className="progress-bar" style={{width: '85%'}}></div>
+                                    </div>
+                                    <span className="progress-text">85%</span>
+                                </td>
+                                <td><span className="status-badge status-active">Active</span></td>
+                                <td>Jan 15, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="project-name">
+                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #22c55e, #16a34a)'}}>M</div>
+                                        <span>Mobile App Development</span>
+                                    </div>
+                                </td>
+                                <td>Mike Johnson</td>
+                                <td>
+                                    <div className="progress-bar-container">
+                                        <div className="progress-bar" style={{width: '60%'}}></div>
+                                    </div>
+                                    <span className="progress-text">60%</span>
+                                </td>
+                                <td><span className="status-badge status-active">Active</span></td>
+                                <td>Feb 01, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="project-name">
+                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #eab308, #ca8a04)'}}>D</div>
+                                        <span>Data Migration</span>
+                                    </div>
+                                </td>
+                                <td>Emily Davis</td>
+                                <td>
+                                    <div className="progress-bar-container">
+                                        <div className="progress-bar" style={{width: '95%'}}></div>
+                                    </div>
+                                    <span className="progress-text">95%</span>
+                                </td>
+                                <td><span className="status-badge status-review">In Review</span></td>
+                                <td>Jan 10, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="project-name">
+                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #ec4899, #db2777)'}}>B</div>
+                                        <span>Brand Guidelines</span>
+                                    </div>
+                                </td>
+                                <td>Alex Martinez</td>
+                                <td>
+                                    <div className="progress-bar-container">
+                                        <div className="progress-bar" style={{width: '40%'}}></div>
+                                    </div>
+                                    <span className="progress-text">40%</span>
+                                </td>
+                                <td><span className="status-badge status-active">Active</span></td>
+                                <td>Jan 25, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="project-name">
+                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)'}}>C</div>
+                                        <span>Customer Portal</span>
+                                    </div>
+                                </td>
+                                <td>Sarah Chen</td>
+                                <td>
+                                    <div className="progress-bar-container">
+                                        <div className="progress-bar" style={{width: '100%'}}></div>
+                                    </div>
+                                    <span className="progress-text">100%</span>
+                                </td>
+                                <td><span className="status-badge status-completed">Completed</span></td>
+                                <td>Jan 05, 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </Card>
             </main>
         </div>
