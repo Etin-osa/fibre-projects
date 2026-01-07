@@ -116,97 +116,248 @@ export default function Dashboard() {
                 {/* 2.1 Header Section */}
                 <header className="content-header">
                     <div className="header-left">
-                        <h1><LayoutDashboard /> Dashboard</h1>
+                        <h1>Dashboard</h1>
                     </div>
                     <div className="header-right">
-                        <span className="last-updated">Last updated: Jan 6, 2026</span>
-                        <div className="user-stack">
-                            <img className="user-avatar" src="https://placehold.co/40" alt="u1" />
-                            <img className="user-avatar" src="https://placehold.co/40" alt="u2" />
-                            <img className="user-avatar" src="https://placehold.co/40" alt="u3" />
+                        <div className="profile-info">
+                            <img className="profile-avatar" src="https://i.pravatar.cc/80" alt="John Anderson" />
+                            <div className="profile-details">
+                                <span className="profile-name">John Anderson</span>
+                                <span className="profile-role">Product Manager</span>
+                            </div>
                         </div>
                         <ThemeToggle />
                     </div>
                 </header>
 
-                {/* 2.2 Title & Actions */}
-                <div className="title-section">
-                    <div className="text-group">
-                        <h2>Overview</h2>
-                        <p>Track your project progress and stats here.</p>
-                    </div>
-                    <div className="action-buttons">
-                        <button>Filter</button>
-                        <button className="primary">Create New Project</button>
-                    </div>
+                {/* 2.2 Welcome Section */}
+                <div className="welcome-section">
+                    <h2>Welcome back, John!</h2>
+                    <p>Here's what's happening with your projects today.</p>
                 </div>
 
-                {/* 2.3 Four Stats Sections */}
+                {/* 2.3 Four Stats Cards */}
                 <div className="stats-grid">
                     <Card hoverable className="stat-card">
-                        <div className="stat-icon"><CheckCircle2 /></div>
+                        <div className="stat-header">
+                            <div className="stat-icon green"><CheckCircle2 /></div>
+                            <span className="stat-change positive">+12%</span>
+                        </div>
+                        <div className="stat-value">156</div>
+                        <div className="stat-label">Total Projects</div>
+                        <div className="stat-subtext">32 active this month</div>
+                    </Card>
+                    <Card hoverable className="stat-card">
+                        <div className="stat-header">
+                            <div className="stat-icon blue"><TrendingUp /></div>
+                            <span className="stat-change positive">+8%</span>
+                        </div>
+                        <div className="stat-value">89%</div>
+                        <div className="stat-label">Completion Rate</div>
+                        <div className="stat-subtext">Above target by 9%</div>
+                    </Card>
+                    <Card hoverable className="stat-card">
+                        <div className="stat-header">
+                            <div className="stat-icon yellow"><Clock /></div>
+                            <span className="stat-change negative">-3%</span>
+                        </div>
                         <div className="stat-value">24</div>
-                        <div className="stat-label">Tasks Completed</div>
+                        <div className="stat-label">Pending Tasks</div>
+                        <div className="stat-subtext">12 due this week</div>
                     </Card>
                     <Card hoverable className="stat-card">
-                        <div className="stat-icon" style={{color: "#3b82f6", backgroundColor: "#1e3a8a"}}><TrendingUp /></div>
-                        <div className="stat-value">12</div>
-                        <div className="stat-label">Projects Active</div>
-                    </Card>
-                    <Card hoverable className="stat-card">
-                        <div className="stat-icon" style={{color: "#eab308", backgroundColor: "#713f12"}}><Clock /></div>
-                        <div className="stat-value">8</div>
-                        <div className="stat-label">Pending Review</div>
-                    </Card>
-                    <Card hoverable className="stat-card">
-                        <div className="stat-icon" style={{color: "#ef4444", backgroundColor: "#7f1d1d"}}><Users /></div>
-                        <div className="stat-value">5</div>
+                        <div className="stat-header">
+                            <div className="stat-icon purple"><Users /></div>
+                            <span className="stat-change positive">+2</span>
+                        </div>
+                        <div className="stat-value">48</div>
                         <div className="stat-label">Team Members</div>
+                        <div className="stat-subtext">8 teams total</div>
                     </Card>
                 </div>
 
-                {/* 2.4 Two Split Sections */}
+                {/* 2.4 Performance Chart Section */}
                 <div className="charts-grid">
-                    <Card className="large-card">
-                        <h3>Project Activity</h3>
-                        <div style={{height: "200px", background: "#0f0f14", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", color: "#666"}}>
-                            Chart Placeholder
+                    <Card className="chart-card">
+                        <div className="card-header">
+                            <h3>Performance Overview</h3>
+                            <div className="chart-tabs">
+                                <button className="tab active">Week</button>
+                                <button className="tab">Month</button>
+                                <button className="tab">Year</button>
+                            </div>
+                        </div>
+                        <div className="bar-chart">
+                            <div className="chart-bar" style={{height: '60%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Mon</span>
+                            </div>
+                            <div className="chart-bar" style={{height: '75%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Tue</span>
+                            </div>
+                            <div className="chart-bar" style={{height: '45%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Wed</span>
+                            </div>
+                            <div className="chart-bar" style={{height: '85%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Thu</span>
+                            </div>
+                            <div className="chart-bar" style={{height: '70%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Fri</span>
+                            </div>
+                            <div className="chart-bar" style={{height: '55%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Sat</span>
+                            </div>
+                            <div className="chart-bar" style={{height: '40%'}}>
+                                <div className="bar-fill"></div>
+                                <span className="bar-label">Sun</span>
+                            </div>
                         </div>
                     </Card>
                     <Card className="side-card">
-                        <h3>Today's Schedule</h3>
-                        <div style={{marginTop: "20px", display: "flex", flexDirection: "column", gap: "12px"}}>
-                            <div className="schedule-item">09:00 AM - Team Meeting</div>
-                            <div className="schedule-item">11:00 AM - Design Review</div>
-                            <div className="schedule-item">02:00 PM - Client Call</div>
+                        <h3>Team Activity</h3>
+                        <div className="activity-list">
+                            <div className="activity-item">
+                                <img src="https://i.pravatar.cc/40?img=1" alt="Sarah" />
+                                <div className="activity-info">
+                                    <span className="activity-name">Sarah Chen</span>
+                                    <span className="activity-action">Completed 3 tasks</span>
+                                </div>
+                                <span className="activity-time">2h ago</span>
+                            </div>
+                            <div className="activity-item">
+                                <img src="https://i.pravatar.cc/40?img=2" alt="Mike" />
+                                <div className="activity-info">
+                                    <span className="activity-name">Mike Johnson</span>
+                                    <span className="activity-action">Updated project status</span>
+                                </div>
+                                <span className="activity-time">4h ago</span>
+                            </div>
+                            <div className="activity-item">
+                                <img src="https://i.pravatar.cc/40?img=3" alt="Emily" />
+                                <div className="activity-info">
+                                    <span className="activity-name">Emily Davis</span>
+                                    <span className="activity-action">Created new milestone</span>
+                                </div>
+                                <span className="activity-time">5h ago</span>
+                            </div>
+                            <div className="activity-item">
+                                <img src="https://i.pravatar.cc/40?img=4" alt="Alex" />
+                                <div className="activity-info">
+                                    <span className="activity-name">Alex Martinez</span>
+                                    <span className="activity-action">Uploaded 5 files</span>
+                                </div>
+                                <span className="activity-time">6h ago</span>
+                            </div>
                         </div>
                     </Card>
                 </div>
 
-                {/* 2.5 Bottom Section */}
+                {/* 2.5 Recent Projects Table */}
                 <Card className="bottom-section">
-                    <h3>Recent Tasks</h3>
-                    <table className="tasks-table">
+                    <div className="table-header">
+                        <h3>Recent Projects</h3>
+                        <button className="view-all-btn">View All</button>
+                    </div>
+                    <table className="projects-table">
                         <thead>
                             <tr>
-                                <th>Task Name</th>
+                                <th>Project Name</th>
+                                <th>Team Lead</th>
+                                <th>Progress</th>
                                 <th>Status</th>
-                                <th>Assignee</th>
                                 <th>Due Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Redesign Homepage</td>
-                                <td><span className="status-badge status-completed">Completed</span></td>
-                                <td>Alex M.</td>
+                                <td>
+                                    <div className="project-name">
+                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #6366f1, #818cf8)'}}>W</div>
+                                        <span>Website Redesign</span>
+                                    </div>
+                                </td>
+                                <td>Sarah Chen</td>
+                                <td>
+                                    <div className="progress-bar-container">
+                                        <div className="progress-bar" style={{width: '85%'}}></div>
+                                    </div>
+                                    <span className="progress-text">85%</span>
+                                </td>
+                                <td><span className="status-badge status-active">Active</span></td>
+                                <td>Jan 15, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="project-name">
+                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #22c55e, #16a34a)'}}>M</div>
+                                        <span>Mobile App Development</span>
+                                    </div>
+                                </td>
+                                <td>Mike Johnson</td>
+                                <td>
+                                    <div className="progress-bar-container">
+                                        <div className="progress-bar" style={{width: '60%'}}></div>
+                                    </div>
+                                    <span className="progress-text">60%</span>
+                                </td>
+                                <td><span className="status-badge status-active">Active</span></td>
+                                <td>Feb 01, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="project-name">
+                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #eab308, #ca8a04)'}}>D</div>
+                                        <span>Data Migration</span>
+                                    </div>
+                                </td>
+                                <td>Emily Davis</td>
+                                <td>
+                                    <div className="progress-bar-container">
+                                        <div className="progress-bar" style={{width: '95%'}}></div>
+                                    </div>
+                                    <span className="progress-text">95%</span>
+                                </td>
+                                <td><span className="status-badge status-review">In Review</span></td>
                                 <td>Jan 10, 2026</td>
                             </tr>
                             <tr>
-                                <td>Fix Navigation Bug</td>
-                                <td><span className="status-badge status-progress">In Progress</span></td>
-                                <td>Sarah J.</td>
-                                <td>Jan 12, 2026</td>
+                                <td>
+                                    <div className="project-name">
+                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #ec4899, #db2777)'}}>B</div>
+                                        <span>Brand Guidelines</span>
+                                    </div>
+                                </td>
+                                <td>Alex Martinez</td>
+                                <td>
+                                    <div className="progress-bar-container">
+                                        <div className="progress-bar" style={{width: '40%'}}></div>
+                                    </div>
+                                    <span className="progress-text">40%</span>
+                                </td>
+                                <td><span className="status-badge status-active">Active</span></td>
+                                <td>Jan 25, 2026</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="project-name">
+                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)'}}>C</div>
+                                        <span>Customer Portal</span>
+                                    </div>
+                                </td>
+                                <td>Sarah Chen</td>
+                                <td>
+                                    <div className="progress-bar-container">
+                                        <div className="progress-bar" style={{width: '100%'}}></div>
+                                    </div>
+                                    <span className="progress-text">100%</span>
+                                </td>
+                                <td><span className="status-badge status-completed">Completed</span></td>
+                                <td>Jan 05, 2026</td>
                             </tr>
                         </tbody>
                     </table>
