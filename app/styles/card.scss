@@ -1,28 +1,12 @@
 // Premium Dark Theme Card Component
 $card-bg: #252527;
 $card-border: #373739;
-$card-shadow: rgba(0, 0, 0, 0.219);
-$card-hover-shadow: rgba(0, 0, 0, 0.7);
 
 .card {
     background: $card-bg;
     border: 1px solid $card-border;
     border-radius: 16px;
-    padding: 24px;
-    box-shadow: 
-        0 4px 15px -1px $card-shadow,
-        0 2px 4px -2px $card-shadow;
+    padding: 1.1rem 24px; // reduced top/bottom padding
+    box-shadow: 0 0px 8px rgba(0,0,0,0.32), 0 0px 8px rgba(0,0,0,0.18);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    &.card-hoverable {
-        cursor: pointer;
-
-        &:hover {
-            transform: translateY(-4px);
-            box-shadow: 
-                0 20px 25px -5px $card-hover-shadow,
-                0 10px 10px -5px $card-hover-shadow;
-            border-color: #3a3a45;
-        }
-    }
 }

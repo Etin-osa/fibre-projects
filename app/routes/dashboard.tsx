@@ -18,7 +18,10 @@ import {
     TrendingUp,
     Users,
     File,
-    Plus
+    Plus,
+    FileText,
+    FileCheck,
+    FileX
 } from "lucide-react";
 import Card from "../components/Card";
 import ThemeToggle from "../ThemeToggle";
@@ -154,40 +157,52 @@ export default function Dashboard() {
                 {/* 2.3 Four Stats Cards */}
                 <div className="stats-grid">
                     <Card hoverable className="stat-card">
-                        <div className="stat-header">
-                            <div className="stat-icon green"><CheckCircle2 /></div>
-                            <span className="stat-change positive">+12%</span>
+                        <div className="card-left">
+                            <div className="stat-title">Total Projects</div>
+                            <div className="stat-number">15</div>
+                            <div className="stat-comparison">
+                                <span className="comparison-value">+5</span> vs last month
+                            </div>
                         </div>
-                        <div className="stat-value">156</div>
-                        <div className="stat-label">Total Projects</div>
-                        <div className="stat-subtext">32 active this month</div>
+                        <div className="card-right">
+                            <Folder className="stat-icon-large" />
+                        </div>
                     </Card>
                     <Card hoverable className="stat-card">
-                        <div className="stat-header">
-                            <div className="stat-icon blue"><TrendingUp /></div>
-                            <span className="stat-change positive">+8%</span>
+                        <div className="card-left">
+                            <div className="stat-title">Total Task</div>
+                            <div className="stat-number">10</div>
+                            <div className="stat-comparison">
+                                <span className="comparison-value">+2</span> vs last month
+                            </div>
                         </div>
-                        <div className="stat-value">89%</div>
-                        <div className="stat-label">Completion Rate</div>
-                        <div className="stat-subtext">Above target by 9%</div>
+                        <div className="card-right">
+                            <FileText className="stat-icon-large" />
+                        </div>
                     </Card>
                     <Card hoverable className="stat-card">
-                        <div className="stat-header">
-                            <div className="stat-icon yellow"><Clock /></div>
-                            <span className="stat-change negative">-3%</span>
+                        <div className="card-left">
+                            <div className="stat-title">In Reviews</div>
+                            <div className="stat-number">23</div>
+                            <div className="stat-comparison">
+                                <span className="comparison-value">+12</span> vs last month
+                            </div>
                         </div>
-                        <div className="stat-value">24</div>
-                        <div className="stat-label">Pending Tasks</div>
-                        <div className="stat-subtext">12 due this week</div>
+                        <div className="card-right">
+                            <FileCheck className="stat-icon-large" />
+                        </div>
                     </Card>
                     <Card hoverable className="stat-card">
-                        <div className="stat-header">
-                            <div className="stat-icon purple"><Users /></div>
-                            <span className="stat-change positive">+2</span>
+                        <div className="card-left">
+                            <div className="stat-title">Completed Tasks</div>
+                            <div className="stat-number">50</div>
+                            <div className="stat-comparison">
+                                <span className="comparison-value">+15</span> vs last month
+                            </div>
                         </div>
-                        <div className="stat-value">48</div>
-                        <div className="stat-label">Team Members</div>
-                        <div className="stat-subtext">8 teams total</div>
+                        <div className="card-right">
+                            <FileX className="stat-icon-large" />
+                        </div>
                     </Card>
                 </div>
 

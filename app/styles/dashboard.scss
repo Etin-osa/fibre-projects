@@ -373,31 +373,52 @@ $warning-text: #eab308;
                 min-height: 140px;
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
 
-                .stat-icon {
-                    width: 48px;
-                    height: 48px;
-                    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(129, 140, 248, 0.1));
-                    color: $accent-color;
-                    border-radius: 12px;
+                .card-left {
                     display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-bottom: 16px;
+                    flex-direction: column;
+                    gap: .8rem; // increased gap between text elements
+
+                    .stat-title {
+                        color: $text-muted;
+                        font-size: 0.95rem;
+                        font-weight: 500;
+                    }
+
+                    .stat-number {
+                        font-size: 40px;
+                        font-weight: 700;
+                        color: white;
+                        letter-spacing: -0.02em;
+                    }
+
+                    .stat-comparison {
+                        color: $text-muted;
+                        font-size: 0.85rem;
+
+                        .comparison-value {
+                            color: white;
+                            font-weight: 600;
+                        }
+                    }
                 }
 
-                .stat-value { 
-                    font-size: 2rem; 
-                    font-weight: 700;
-                    letter-spacing: -0.02em;
-                    margin-bottom: 4px;
+                .card-right {
+                    .stat-icon-large {
+                        width: 60px;
+                        height: 60px;
+                        color: $text-muted;
+                    }
                 }
-                
-                .stat-label { 
-                    color: $text-muted; 
-                    font-size: 0.95rem;
-                    font-weight: 500;
-                }
+            }
+
+            @media (max-width: 1024px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media (max-width: 640px) {
+                grid-template-columns: 1fr;
             }
         }
 
