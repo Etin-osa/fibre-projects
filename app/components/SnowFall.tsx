@@ -1,7 +1,7 @@
 
 import { useEffect, useRef } from "react";
 
-export default function SnowFall({ opacity }: { opacity: number }) {
+export default function SnowFall() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -113,8 +113,6 @@ export default function SnowFall({ opacity }: { opacity: number }) {
                 height: "100%",
                 pointerEvents: "none",
                 zIndex: -1,
-                opacity,
-                transition: "opacity 0.7s ease-in-out",
             }}
         />
     );

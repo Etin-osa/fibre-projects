@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Premium Dark Theme Card Component
 $card-bg: #252527;
 $card-border: #373739;
@@ -9,4 +11,5 @@ $card-border: #373739;
     padding: 1.1rem 24px; // reduced top/bottom padding
     box-shadow: 0 0px 8px rgba(0, 0, 0, 0.247), 0 0px 8px rgba(0, 0, 0, 0.356);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    &.is-snowing { background: color.change(#2d2d32, $alpha: 0.5); box-shadow: none; }
 }

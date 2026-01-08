@@ -17,7 +17,6 @@ export default function Billie() {
     const textRef = useRef<HTMLHeadingElement>(null);
     const cursorRef = useRef<HTMLDivElement>(null);
     const trailRef = useRef<HTMLDivElement>(null);
-    const [opacity, setOpacity] = useState(false);
     
     // Refs for tracking mutable state without re-renders
     const lastPos = useRef({ x: 0, y: 0 });

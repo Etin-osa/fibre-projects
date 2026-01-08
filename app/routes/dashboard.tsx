@@ -1,9 +1,10 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "../styles/dashboard.scss";
 import {
     Bell,
     Bot,
     Calendar,
+    CloudSnow,
     Folder,
     HelpCircle,
     Inbox,
@@ -22,6 +23,7 @@ import {
     Filter,
 } from "lucide-react";
 import Card from "../components/Card";
+import SnowFall from "../components/SnowFall";
 import ThemeToggle from "../ThemeToggle";
 
 export function meta() {
@@ -33,11 +35,23 @@ export function meta() {
 
 export default function Dashboard() {
     const container = useRef(null)
+    const [snowing, setSnowing] = useState(false);
+
+    const chartData = [
+        { day: 'Mon', value: 65, label: '+65%' },
+        { day: 'Tue', value: 45, label: '+45%' },
+        { day: 'Wed', value: 75, label: '+75%' },
+        { day: 'Thu', value: 55, label: '+55%' },
+        { day: 'Fri', value: 80, label: '+80%' },
+        { day: 'Sat', value: 35, label: '+35%' },
+        { day: 'Sun', value: 60, label: '+60%' },
+    ];
 
     return (
-        <div ref={container} className="dashboard-container">
+        <div ref={container} className={`dashboard-container ${snowing ? 'is-snowing' : ''}`}>
+            <SnowFall />
             {/* 1. Left Navigation Sidebar */}
-            <nav className="sidebar">
+            <nav className={`sidebar ${snowing ? 'is-snowing' : ''}`}>
                 {/* 1.1 Header */}
                 <div className="sidebar-header">
                     <div className="brand">
@@ -72,7 +86,7 @@ export default function Dashboard() {
 
                     {/* 1.3 Main Navigation */}
                     <div className="sidebar-section">
-                        <div className="nav-item active">
+                        <div className={`nav-item active ${snowing ? 'is-snowing' : ''}`}>
                             <LayoutDashboard size={20} />
                             <span>Dashboard</span>
                         </div>
@@ -104,7 +118,7 @@ export default function Dashboard() {
                 </div>
 
                 {/* 1.4 Bottom Promo */}
-                <div className="upgrade-card">
+                <div className={`upgrade-card ${snowing ? 'is-snowing' : ''}`}>
                     <div className="close-btn"><X size={16} /></div>
                     <div className="promo-image">
                         <Bot size={40} /> 
@@ -126,11 +140,14 @@ export default function Dashboard() {
                     <div className="header-right">
                         <span className="last-updated">Last updated January 8, 2026</span>
                         <div className="avatars">
-                            <div className="avatar avatar-1"></div>
-                            <div className="avatar avatar-2"></div>
-                            <div className="avatar avatar-3"></div>
+                            <img className={`avatar avatar-1`} src="https://i.pravatar.cc/40?img=10" alt="User 1" />
+                            <img className={`avatar avatar-2`} src="https://i.pravatar.cc/40?img=12" alt="User 2" />
+                            <img className={`avatar avatar-3`} src="https://i.pravatar.cc/40?img=15" alt="User 3" />
                         </div>
-                        <ThemeToggle />
+                        <button className="theme-toggle" onClick={() => setSnowing(!snowing)} style={{ display: 'flex', alignItems: 'center', background: 'transparent', border: '1px solid #3f3f46', color: '#fff', padding: '0.5rem 1rem', borderRadius: '0.5rem', cursor: 'pointer', marginLeft: '1rem' }}>
+                            <CloudSnow size={20} />
+                            <span style={{ marginLeft: '8px' }}>Let it snow</span>
+                        </button>
                     </div>
                 </header>
 
@@ -143,11 +160,11 @@ export default function Dashboard() {
                         </p>
                     </div>
                     <div className="welcome-actions">
-                        <button className="btn-export">
+                        <button className={`btn-export${snowing ? " is-snowing" : ""}`}>
                             <File size={18} />
                             <span>Export</span>
                         </button>
-                        <button className="btn-new-project">
+                        <button className={`btn-new-project${snowing ? " is-snowing" : ""}`}>
                             <Plus size={18} />
                             <span>New Project</span>
                         </button>
@@ -156,7 +173,7 @@ export default function Dashboard() {
 
                 {/* 2.3 Four Stats Cards */}
                 <div className="stats-grid">
-                    <Card hoverable className="stat-card">
+                    <Card hoverable className="stat-card" isSnowing={snowing}>
                         <div className="card-left">
                             <div className="stat-title">Total Projects</div>
                             <div className="stat-number">15</div>
@@ -168,7 +185,7 @@ export default function Dashboard() {
                             <Folder className="stat-icon-large" />
                         </div>
                     </Card>
-                    <Card hoverable className="stat-card">
+                    <Card hoverable className="stat-card" isSnowing={snowing}>
                         <div className="card-left">
                             <div className="stat-title">Total Task</div>
                             <div className="stat-number">10</div>
@@ -180,7 +197,7 @@ export default function Dashboard() {
                             <FileText className="stat-icon-large" />
                         </div>
                     </Card>
-                    <Card hoverable className="stat-card">
+                    <Card hoverable className="stat-card" isSnowing={snowing}>
                         <div className="card-left">
                             <div className="stat-title">In Reviews</div>
                             <div className="stat-number">23</div>
@@ -192,7 +209,7 @@ export default function Dashboard() {
                             <FileCheck className="stat-icon-large" />
                         </div>
                     </Card>
-                    <Card hoverable className="stat-card">
+                    <Card hoverable className="stat-card" isSnowing={snowing}>
                         <div className="card-left">
                             <div className="stat-title">Completed Tasks</div>
                             <div className="stat-number">50</div>
@@ -209,7 +226,7 @@ export default function Dashboard() {
                 {/* 2.4 Charts Grid Section */}
                 <div className="charts-grid">
                     {/* Big Card (Left) - Today's Tasks */}
-                    <Card className="tasks-card">
+                    <Card className="tasks-card" isSnowing={snowing}>
                         <div className="card-header">
                             <h3>Today's Tasks</h3>
                             <div className="header-actions">
@@ -290,7 +307,7 @@ export default function Dashboard() {
                     </Card>
 
                     {/* Performance Card */}
-                    <Card className="performance-card">
+                    <Card className="performance-card" isSnowing={snowing}>
                         <div className="card-header">
                             <h3>Performance</h3>
                             <select className="period-dropdown">
@@ -305,16 +322,28 @@ export default function Dashboard() {
                                 <span className="trend-label">vs last week</span>
                             </div>
                         </div>
-                        <div className="chart-placeholder">
-                            <span>Bar Chart Placeholder</span>
+                        <div className={`chart-placeholder${snowing ? " is-snowing" : ""}`}>
+                            {chartData.map((item, index) => (
+                                <div key={index} className="chart-column">
+                                    <div className={`chart-cover${snowing ? " is-snowing" : ""}`}>
+                                        <div 
+                                            className={`chart-bar${snowing ? " is-snowing" : ""}`} 
+                                            style={{ height: `${item.value}%` }}
+                                        >
+                                            <span className="bar-text">{item.label}</span>
+                                        </div>
+                                    </div>
+                                    <span className="bar-day">{item.day}</span>
+                                </div>
+                            ))}
                         </div>
                     </Card>
                 </div>
 
                 {/* 2.5 Recent Projects Table */}
-                <Card className="bottom-section">
+                <Card className="bottom-section" isSnowing={snowing}>
                     <div className="table-header-row">
-                        <h3>List Project</h3>
+                        <h3>Project List</h3>
                         <div className="header-actions">
                             <div className="search-bar">
                                 <Search size={18} />
@@ -359,7 +388,7 @@ export default function Dashboard() {
                                 </div>
                                 <div className="table-cell">12 Mar 2024</div>
                                 <div className="table-cell owner-cell">
-                                    <img className="owner-avatar" src="https://i.pravatar.cc/40?img=1" alt="Sarah Chen" />
+                                    <img className="owner-avatar" src="https://i.pravatar.cc/40?img=10" alt="Sarah Chen" />
                                     <span>Sarah Chen</span>
                                 </div>
                             </div>
@@ -386,7 +415,7 @@ export default function Dashboard() {
                                 </div>
                                 <div className="table-cell">18 Mar 2024</div>
                                 <div className="table-cell owner-cell">
-                                    <img className="owner-avatar" src="https://i.pravatar.cc/40?img=2" alt="Mike Johnson" />
+                                    <img className="owner-avatar" src="https://i.pravatar.cc/40?img=12" alt="Mike Johnson" />
                                     <span>Mike Johnson</span>
                                 </div>
                             </div>
@@ -413,7 +442,7 @@ export default function Dashboard() {
                                 </div>
                                 <div className="table-cell">22 Mar 2024</div>
                                 <div className="table-cell owner-cell">
-                                    <img className="owner-avatar" src="https://i.pravatar.cc/40?img=3" alt="Emily Davis" />
+                                    <img className="owner-avatar" src="https://i.pravatar.cc/40?img=15" alt="Emily Davis" />
                                     <span>Emily Davis</span>
                                 </div>
                             </div>
