@@ -1,3 +1,6 @@
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import "../styles/dashboard.scss";
 import {
     Bell,
@@ -13,19 +16,12 @@ import {
     Settings,
     Sparkles,
     X,
-    CheckCircle2,
-    Clock,
-    TrendingUp,
-    Users,
     File,
     Plus,
     FileText,
     FileCheck,
     FileX,
     Filter,
-    ChevronDown,
-    ArrowUp,
-    MoreVertical
 } from "lucide-react";
 import Card from "../components/Card";
 import ThemeToggle from "../ThemeToggle";
@@ -38,8 +34,10 @@ export function meta() {
 }
 
 export default function Dashboard() {
+    const container = useRef(null)
+
     return (
-        <div className="dashboard-container">
+        <div ref={container} className="dashboard-container">
             {/* 1. Left Navigation Sidebar */}
             <nav className="sidebar">
                 {/* 1.1 Header */}
