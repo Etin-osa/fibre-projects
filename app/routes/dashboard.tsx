@@ -16,7 +16,9 @@ import {
     CheckCircle2,
     Clock,
     TrendingUp,
-    Users
+    Users,
+    Sun,
+    Moon
 } from "lucide-react";
 import Card from "../components/Card";
 import ThemeToggle from "../ThemeToggle";
@@ -115,15 +117,15 @@ export default function Dashboard() {
                 {/* 2.1 Header Section */}
                 <header className="content-header">
                     <div className="header-left">
-                        <h1>Dashboard</h1>
+                        <LayoutDashboard size={20} />
+                        <span>Dashboard</span>
                     </div>
                     <div className="header-right">
-                        <div className="profile-info">
-                            <img className="profile-avatar" src="https://i.pravatar.cc/80" alt="John Anderson" />
-                            <div className="profile-details">
-                                <span className="profile-name">John Anderson</span>
-                                <span className="profile-role">Product Manager</span>
-                            </div>
+                        <span className="last-updated">Last updated January 8, 2026</span>
+                        <div className="avatars">
+                            <div className="avatar avatar-1"></div>
+                            <div className="avatar avatar-2"></div>
+                            <div className="avatar avatar-3"></div>
                         </div>
                         <ThemeToggle />
                     </div>

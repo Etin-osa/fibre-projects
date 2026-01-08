@@ -209,53 +209,81 @@ $warning-text: #eab308;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1.5rem 2rem;
             margin-bottom: 2.5rem;
             
             .header-left {
                 display: flex;
                 align-items: center;
-                gap: 16px;
-                
-                h1 {
-                    font-size: 1.75rem;
-                    font-weight: 700;
-                    margin: 0;
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                    letter-spacing: -0.02em;
-                }
+                gap: 0.75rem;
+                color: $text-muted;
+                font-weight: 500;
+                font-size: 1.25rem;
             }
             
             .header-right {
                 display: flex;
                 align-items: center;
-                gap: 24px;
+                gap: 1.25rem;
 
                 .last-updated {
                     color: $text-muted;
-                    font-size: 0.9rem;
-                    font-weight: 500;
+                    font-size: 14px;
                 }
 
-                .user-stack {
+                .avatars {
                     display: flex;
-                    .user-avatar {
-                        width: 36px;
-                        height: 36px;
-                        background: linear-gradient(135deg, #8b5cf6, #ec4899);
+                    align-items: center;
+                    
+                    .avatar {
+                        width: 2.5rem;
+                        height: 2.5rem;
                         border-radius: 50%;
-                        border: 3px solid $dark-bg;
-                        margin-left: -12px;
-                        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-                        transition: transform 0.2s;
-                        
-                        &:first-child { margin-left: 0; }
-                        
-                        &:hover {
-                            transform: translateY(-4px);
-                            z-index: 10;
+                        margin-left: -0.75rem;
+                        border: 1px solid $dark-bg;
+                        box-shadow: none;
+                        background: $accent-color;
+
+                        &:first-child {
+                            margin-left: 0;
                         }
+
+                        &.avatar-1,
+                        &.avatar-2,
+                        &.avatar-3 {
+                            background: $accent-color;
+                        }
+                    }
+                }
+                
+                .theme-toggle {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    color: $text-muted;
+                    transition: color 0.2s;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0.5rem;
+                    
+                    &:hover {
+                        color: $accent-color;
+                    }
+                }
+            }
+            
+            @media (max-width: 768px) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem;
+                gap: 1rem;
+                
+                .header-right {
+                    gap: 0.75rem;
+                    
+                    .last-updated {
+                        font-size: 0.875rem;
                     }
                 }
             }
