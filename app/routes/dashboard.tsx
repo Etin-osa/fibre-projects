@@ -21,7 +21,11 @@ import {
     Plus,
     FileText,
     FileCheck,
-    FileX
+    FileX,
+    Filter,
+    ChevronDown,
+    ArrowUp,
+    MoreVertical
 } from "lucide-react";
 import Card from "../components/Card";
 import ThemeToggle from "../ThemeToggle";
@@ -206,191 +210,219 @@ export default function Dashboard() {
                     </Card>
                 </div>
 
-                {/* 2.4 Performance Chart Section */}
+                {/* 2.4 Charts Grid Section */}
                 <div className="charts-grid">
-                    <Card className="chart-card">
+                    {/* Big Card (Left) - Today's Tasks */}
+                    <Card className="tasks-card">
                         <div className="card-header">
-                            <h3>Performance Overview</h3>
-                            <div className="chart-tabs">
-                                <button className="tab active">Week</button>
-                                <button className="tab">Month</button>
-                                <button className="tab">Year</button>
+                            <h3>Today's Tasks</h3>
+                            <div className="header-actions">
+                                <div className="search-bar">
+                                    <Search size={18} />
+                                    <input type="text" placeholder="Search here..." />
+                                </div>
+                                <button className="filter-btn">
+                                    <Filter size={18} />
+                                    <span>Filter</span>
+                                </button>
                             </div>
                         </div>
-                        <div className="bar-chart">
-                            <div className="chart-bar" style={{height: '60%'}}>
-                                <div className="bar-fill"></div>
-                                <span className="bar-label">Mon</span>
+                        <div className="tasks-table">
+                            <div className="table-header-row">
+                                <div className="table-header-cell">Task Name</div>
+                                <div className="table-header-cell">Project</div>
+                                <div className="table-header-cell">Due</div>
                             </div>
-                            <div className="chart-bar" style={{height: '75%'}}>
-                                <div className="bar-fill"></div>
-                                <span className="bar-label">Tue</span>
-                            </div>
-                            <div className="chart-bar" style={{height: '45%'}}>
-                                <div className="bar-fill"></div>
-                                <span className="bar-label">Wed</span>
-                            </div>
-                            <div className="chart-bar" style={{height: '85%'}}>
-                                <div className="bar-fill"></div>
-                                <span className="bar-label">Thu</span>
-                            </div>
-                            <div className="chart-bar" style={{height: '70%'}}>
-                                <div className="bar-fill"></div>
-                                <span className="bar-label">Fri</span>
-                            </div>
-                            <div className="chart-bar" style={{height: '55%'}}>
-                                <div className="bar-fill"></div>
-                                <span className="bar-label">Sat</span>
-                            </div>
-                            <div className="chart-bar" style={{height: '40%'}}>
-                                <div className="bar-fill"></div>
-                                <span className="bar-label">Sun</span>
+                            <div className="table-body">
+                                <div className="table-row">
+                                    <div className="table-cell">
+                                        <FileText size={18} className="task-icon" />
+                                        <span>Prepare Q2 report</span>
+                                    </div>
+                                    <div className="table-cell">
+                                        <Folder size={18} className="project-icon" />
+                                        <span>Fintech Project</span>
+                                    </div>
+                                    <div className="table-cell">12 Mar 2025</div>
+                                </div>
+                                <div className="table-row">
+                                    <div className="table-cell">
+                                        <FileText size={18} className="task-icon" />
+                                        <span>Update API documentation</span>
+                                    </div>
+                                    <div className="table-cell">
+                                        <Folder size={18} className="project-icon" />
+                                        <span>Mobile Banking App</span>
+                                    </div>
+                                    <div className="table-cell">15 Mar 2025</div>
+                                </div>
+                                <div className="table-row">
+                                    <div className="table-cell">
+                                        <FileText size={18} className="task-icon" />
+                                        <span>Review security audit</span>
+                                    </div>
+                                    <div className="table-cell">
+                                        <Folder size={18} className="project-icon" />
+                                        <span>Enterprise Platform</span>
+                                    </div>
+                                    <div className="table-cell">18 Mar 2025</div>
+                                </div>
+                                <div className="table-row">
+                                    <div className="table-cell">
+                                        <FileText size={18} className="task-icon" />
+                                        <span>Design system updates</span>
+                                    </div>
+                                    <div className="table-cell">
+                                        <Folder size={18} className="project-icon" />
+                                        <span>UI Kit Redesign</span>
+                                    </div>
+                                    <div className="table-cell">20 Mar 2025</div>
+                                </div>
+                                <div className="table-row">
+                                    <div className="table-cell">
+                                        <FileText size={18} className="task-icon" />
+                                        <span>Client presentation deck</span>
+                                    </div>
+                                    <div className="table-cell">
+                                        <Folder size={18} className="project-icon" />
+                                        <span>Marketing Campaign</span>
+                                    </div>
+                                    <div className="table-cell">22 Mar 2025</div>
+                                </div>
                             </div>
                         </div>
                     </Card>
-                    <Card className="side-card">
-                        <h3>Team Activity</h3>
-                        <div className="activity-list">
-                            <div className="activity-item">
-                                <img src="https://i.pravatar.cc/40?img=1" alt="Sarah" />
-                                <div className="activity-info">
-                                    <span className="activity-name">Sarah Chen</span>
-                                    <span className="activity-action">Completed 3 tasks</span>
-                                </div>
-                                <span className="activity-time">2h ago</span>
+
+                    {/* Performance Card */}
+                    <Card className="performance-card">
+                        <div className="card-header">
+                            <h3>Performance</h3>
+                            <select className="period-dropdown">
+                                <option>This Week</option>
+                                <option>This Month</option>
+                            </select>
+                        </div>
+                        <div className="performance-numbers">
+                            <div className="main-value">86%</div>
+                            <div className="comparison">
+                                <span className="trend-value">+15%</span>
+                                <span className="trend-label">vs last week</span>
                             </div>
-                            <div className="activity-item">
-                                <img src="https://i.pravatar.cc/40?img=2" alt="Mike" />
-                                <div className="activity-info">
-                                    <span className="activity-name">Mike Johnson</span>
-                                    <span className="activity-action">Updated project status</span>
-                                </div>
-                                <span className="activity-time">4h ago</span>
-                            </div>
-                            <div className="activity-item">
-                                <img src="https://i.pravatar.cc/40?img=3" alt="Emily" />
-                                <div className="activity-info">
-                                    <span className="activity-name">Emily Davis</span>
-                                    <span className="activity-action">Created new milestone</span>
-                                </div>
-                                <span className="activity-time">5h ago</span>
-                            </div>
-                            <div className="activity-item">
-                                <img src="https://i.pravatar.cc/40?img=4" alt="Alex" />
-                                <div className="activity-info">
-                                    <span className="activity-name">Alex Martinez</span>
-                                    <span className="activity-action">Uploaded 5 files</span>
-                                </div>
-                                <span className="activity-time">6h ago</span>
-                            </div>
+                        </div>
+                        <div className="chart-placeholder">
+                            <span>Bar Chart Placeholder</span>
                         </div>
                     </Card>
                 </div>
 
                 {/* 2.5 Recent Projects Table */}
                 <Card className="bottom-section">
-                    <div className="table-header">
-                        <h3>Recent Projects</h3>
-                        <button className="view-all-btn">View All</button>
+                    <div className="table-header-row">
+                        <h3>List Project</h3>
+                        <div className="header-actions">
+                            <div className="search-bar">
+                                <Search size={18} />
+                                <input type="text" placeholder="Search here..." />
+                            </div>
+                            <button className="filter-btn">
+                                <Filter size={18} />
+                                <span>Filter</span>
+                            </button>
+                        </div>
                     </div>
-                    <table className="projects-table">
-                        <thead>
-                            <tr>
-                                <th>Project Name</th>
-                                <th>Team Lead</th>
-                                <th>Progress</th>
-                                <th>Status</th>
-                                <th>Due Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div className="project-name">
-                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #6366f1, #818cf8)'}}>W</div>
-                                        <span>Website Redesign</span>
+                    <div className="projects-table">
+                        <div className="table-header-row">
+                            <div className="table-header-cell">Project Name</div>
+                            <div className="table-header-cell">Status</div>
+                            <div className="table-header-cell">Progress</div>
+                            <div className="table-header-cell">Total Tasks</div>
+                            <div className="table-header-cell">Due Date</div>
+                            <div className="table-header-cell">Owner</div>
+                        </div>
+                        <div className="table-body">
+                            {/* Example Row 1 */}
+                            <div className="table-row">
+                                <div className="table-cell project-name">
+                                    <div className="project-icon" style={{background: 'linear-gradient(135deg, #6366f1, #818cf8)'}}>
+                                        <Folder size={18} />
                                     </div>
-                                </td>
-                                <td>Sarah Chen</td>
-                                <td>
-                                    <div className="progress-bar-container">
-                                        <div className="progress-bar" style={{width: '85%'}}></div>
+                                    <span>Website Redesign</span>
+                                </div>
+                                <div className="table-cell">
+                                    <span className="status-badge status-inprogress">In Progress</span>
+                                </div>
+                                <div className="table-cell">
+                                    <div className="progress-bar-segments">
+                                        {[...Array(10)].map((_, i) => (
+                                            <div key={i} className={i < 8 ? "bar-segment inprogress" : "bar-segment"}></div>
+                                        ))}
                                     </div>
-                                    <span className="progress-text">85%</span>
-                                </td>
-                                <td><span className="status-badge status-active">Active</span></td>
-                                <td>Jan 15, 2026</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="project-name">
-                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #22c55e, #16a34a)'}}>M</div>
-                                        <span>Mobile App Development</span>
+                                </div>
+                                <div className="table-cell">
+                                    <span style={{color: '#fff'}}>14</span><span style={{color: '#8e8e93'}}>/20</span>
+                                </div>
+                                <div className="table-cell">12 Mar 2024</div>
+                                <div className="table-cell owner-cell">
+                                    <img className="owner-avatar" src="https://i.pravatar.cc/40?img=1" alt="Sarah Chen" />
+                                    <span>Sarah Chen</span>
+                                </div>
+                            </div>
+                            {/* Example Row 2 */}
+                            <div className="table-row">
+                                <div className="table-cell project-name">
+                                    <div className="project-icon" style={{background: 'linear-gradient(135deg, #22c55e, #16a34a)'}}>
+                                        <Folder size={18} />
                                     </div>
-                                </td>
-                                <td>Mike Johnson</td>
-                                <td>
-                                    <div className="progress-bar-container">
-                                        <div className="progress-bar" style={{width: '60%'}}></div>
+                                    <span>Mobile App Development</span>
+                                </div>
+                                <div className="table-cell">
+                                    <span className="status-badge status-completed">Completed</span>
+                                </div>
+                                <div className="table-cell">
+                                    <div className="progress-bar-segments">
+                                        {[...Array(10)].map((_, i) => (
+                                            <div key={i} className={"bar-segment completed"}></div>
+                                        ))}
                                     </div>
-                                    <span className="progress-text">60%</span>
-                                </td>
-                                <td><span className="status-badge status-active">Active</span></td>
-                                <td>Feb 01, 2026</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="project-name">
-                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #eab308, #ca8a04)'}}>D</div>
-                                        <span>Data Migration</span>
+                                </div>
+                                <div className="table-cell">
+                                    <span style={{color: '#fff'}}>20</span><span style={{color: '#8e8e93'}}>/20</span>
+                                </div>
+                                <div className="table-cell">18 Mar 2024</div>
+                                <div className="table-cell owner-cell">
+                                    <img className="owner-avatar" src="https://i.pravatar.cc/40?img=2" alt="Mike Johnson" />
+                                    <span>Mike Johnson</span>
+                                </div>
+                            </div>
+                            {/* Example Row 3 */}
+                            <div className="table-row">
+                                <div className="table-cell project-name">
+                                    <div className="project-icon" style={{background: 'linear-gradient(135deg, #eab308, #ca8a04)'}}>
+                                        <Folder size={18} />
                                     </div>
-                                </td>
-                                <td>Emily Davis</td>
-                                <td>
-                                    <div className="progress-bar-container">
-                                        <div className="progress-bar" style={{width: '95%'}}></div>
+                                    <span>Data Migration</span>
+                                </div>
+                                <div className="table-cell">
+                                    <span className="status-badge status-onhold">On Hold</span>
+                                </div>
+                                <div className="table-cell">
+                                    <div className="progress-bar-segments">
+                                        {[...Array(10)].map((_, i) => (
+                                            <div key={i} className={i < 4 ? "bar-segment onhold" : "bar-segment"}></div>
+                                        ))}
                                     </div>
-                                    <span className="progress-text">95%</span>
-                                </td>
-                                <td><span className="status-badge status-review">In Review</span></td>
-                                <td>Jan 10, 2026</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="project-name">
-                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #ec4899, #db2777)'}}>B</div>
-                                        <span>Brand Guidelines</span>
-                                    </div>
-                                </td>
-                                <td>Alex Martinez</td>
-                                <td>
-                                    <div className="progress-bar-container">
-                                        <div className="progress-bar" style={{width: '40%'}}></div>
-                                    </div>
-                                    <span className="progress-text">40%</span>
-                                </td>
-                                <td><span className="status-badge status-active">Active</span></td>
-                                <td>Jan 25, 2026</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="project-name">
-                                        <div className="project-icon" style={{background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)'}}>C</div>
-                                        <span>Customer Portal</span>
-                                    </div>
-                                </td>
-                                <td>Sarah Chen</td>
-                                <td>
-                                    <div className="progress-bar-container">
-                                        <div className="progress-bar" style={{width: '100%'}}></div>
-                                    </div>
-                                    <span className="progress-text">100%</span>
-                                </td>
-                                <td><span className="status-badge status-completed">Completed</span></td>
-                                <td>Jan 05, 2026</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                </div>
+                                <div className="table-cell">
+                                    <span style={{color: '#fff'}}>4</span><span style={{color: '#8e8e93'}}>/20</span>
+                                </div>
+                                <div className="table-cell">22 Mar 2024</div>
+                                <div className="table-cell owner-cell">
+                                    <img className="owner-avatar" src="https://i.pravatar.cc/40?img=3" alt="Emily Davis" />
+                                    <span>Emily Davis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </Card>
             </main>
         </div>

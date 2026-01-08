@@ -2,9 +2,9 @@
 @use "sass:color";
 
 // --- Premium Dark Theme Variables ---
-$dark-bg: #1D1D1F;
+$dark-bg: #19191b;
 $dark-sidebar: #1a1a1f;
-$dark-card: #1a1a1f;
+$dark-card: #2a2a2e;
 $dark-border: #2a2a35;
 $dark-hover: #3A3A3A;
 $text-light: #f5f5f7;
@@ -35,17 +35,14 @@ $warning-text: #eab308;
         padding: 1.5rem;
         position: relative;
         flex-shrink: 0;
-        box-shadow: 0.25rem 0 0.75rem rgba(0, 0, 0, 0.3);
+        box-shadow: 0.25rem 0 0.75rem rgba(0, 0, 0, 0.15);
 
         .sidebar-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            @include mixin.flex-between;
             margin-bottom: 1.5rem;
 
             .brand {
-                display: flex;
-                align-items: center;
+                @include mixin.flex-center;
                 gap: 0.75rem;
                 font-weight: 700;
                 font-size: 1.25rem;
@@ -61,7 +58,7 @@ $warning-text: #eab308;
                 height: 2.25rem;
                 background: linear-gradient(135deg, $accent-color, $accent-hover);
                 border-radius: 50%;
-                box-shadow: 0 0.125rem 0.5rem rgba(99, 102, 241, 0.3);
+                box-shadow: 0 0.125rem 0.5rem rgba(99, 102, 241, 0.15);
                 img {
                     width: 100%;
                     height: 100%;
@@ -72,8 +69,7 @@ $warning-text: #eab308;
         }
 
         .sidebar-nav {
-            display: flex;
-            flex-direction: column;
+            @include mixin.flex-column;
             gap: 0.5rem;
             flex: 1; 
             overflow-y: auto;
@@ -89,34 +85,24 @@ $warning-text: #eab308;
             }
             
             .nav-item {
-                display: flex;
-                align-items: center;
+                @include mixin.flex-center;
+                justify-content: flex-start;
                 gap: 0.75rem;
                 padding: 0.75rem 0.875rem;
                 border-radius: 0.625rem;
                 cursor: pointer;
                 color: $text-muted;
-                transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
                 font-size: 0.95rem;
                 font-weight: 500;
 
                 svg {
                     color: $text-muted;
-                    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-                }
-
-                &:hover {
-                    background-color: $dark-hover;
-                    color: $text-light;
-                    transform: translateX(0.25rem);
-                    svg { color: $text-light; }
                 }
 
                 &.active {
-                    background: linear-gradient(135deg, $accent-color, $accent-hover);
+                    background: #2d2d32;
                     color: white;
                     font-weight: 600;
-                    box-shadow: 0 0.25rem 0.75rem rgba(99, 102, 241, 0.3);
                     svg { color: white; }
                 }
 
@@ -131,14 +117,14 @@ $warning-text: #eab308;
             bottom: 1.5rem;
             left: 1.5rem;
             right: 1.5rem;
-            background: linear-gradient(135deg, $accent-color, $accent-hover);
+            background: #3A3A3A;
             color: white;
             padding: 1.25rem;
             border-radius: 1rem;
             text-align: center;
             box-shadow: 
-                0 0.625rem 0.9375rem -0.1875rem rgba(99, 102, 241, 0.4),
-                0 0.25rem 0.375rem -0.25rem rgba(99, 102, 241, 0.4);
+                0 0.625rem 0.9375rem -0.1875rem rgba(0, 0, 0, 0.2),
+                0 0.25rem 0.375rem -0.25rem rgba(0, 0, 0, 0.2);
             transition: transform 0.2s;
 
             &:hover {
@@ -156,14 +142,12 @@ $warning-text: #eab308;
             }
 
             .promo-image {
+                @include mixin.flex-center;
                 width: 5rem;
                 height: 5rem;
                 background-color: rgba(255,255,255,0.2);
                 border-radius: 50%;
                 margin: 0.625rem auto;
-                display: flex;
-                align-items: center;
-                justify-content: center;
             }
 
             h4 {
@@ -184,7 +168,7 @@ $warning-text: #eab308;
                 padding: 0.625rem;
                 border: none;
                 background-color: white;
-                color: $accent-color;
+                color: #3A3A3A;
                 border-radius: 0.5rem;
                 font-weight: 700;
                 cursor: pointer;
@@ -201,20 +185,17 @@ $warning-text: #eab308;
     // --- Main Content ---
     .main-content {
         flex: 1;
-        padding: 1.5rem 2rem;
+        padding: 0rem 2rem;
         overflow-y: auto;
 
         // 1. Header Section (Dashboard | Date & Users)
         .content-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            @include mixin.flex-between;
             padding: 1.5rem 0;
             margin-bottom: 2rem;
             
             .header-left {
-                display: flex;
-                align-items: center;
+                @include mixin.flex-center;
                 gap: 0.75rem;
                 color: $text-muted;
                 font-weight: 500;
@@ -222,18 +203,15 @@ $warning-text: #eab308;
             }
             
             .header-right {
-                display: flex;
-                align-items: center;
+                @include mixin.flex-center;
                 gap: 1.25rem;
 
                 .last-updated {
-                    color: $text-muted;
-                    font-size: 14px;
+                    @include mixin.text-muted(14px);
                 }
 
                 .avatars {
-                    display: flex;
-                    align-items: center;
+                    @include mixin.flex-center;
                     
                     .avatar {
                         width: 2.5rem;
@@ -257,14 +235,12 @@ $warning-text: #eab308;
                 }
                 
                 .theme-toggle {
+                    @include mixin.flex-center;
                     background: none;
                     border: none;
                     cursor: pointer;
                     color: $text-muted;
                     transition: color 0.2s;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
                     padding: 0.5rem;
                     
                     &:hover {
@@ -291,22 +267,16 @@ $warning-text: #eab308;
 
         // 2. Welcome Section
         .welcome-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            @include mixin.flex-between;
             margin-bottom: 2rem;
 
             .welcome-text {
                 h2 {
-                    font-size: 40px;
-                    color: white;
-                    margin: 0 0 0.5rem 0;
-                    font-weight: 700;
-                    letter-spacing: -0.02em;
+                    @include mixin.heading-large;
+                    margin-bottom: 0.5rem;
                 }
                 p {
-                    color: $text-muted;
-                    font-size: 1rem;
+                    @include mixin.text-muted(1rem);
                     margin: 0;
                     
                     .highlight {
@@ -317,12 +287,11 @@ $warning-text: #eab308;
             }
 
             .welcome-actions {
-                display: flex;
+                @include mixin.flex-center;
                 gap: 1rem;
 
                 button {
-                    display: flex;
-                    align-items: center;
+                    @include mixin.flex-center;
                     gap: 0.5rem;
                     padding: 0.75rem 1.25rem;
                     border-radius: 0.75rem;
@@ -331,7 +300,7 @@ $warning-text: #eab308;
                     cursor: pointer;
                     transition: all 0.2s;
                     font-size: 0.95rem;
-                    box-shadow: 0 0px 8px rgba(0,0,0,0.32), 0 0px 8px rgba(0,0,0,0.18);
+                    box-shadow: 0 0px 8px rgba(0,0,0,0.15), 0 0px 8px rgba(0,0,0,0.08);
 
                     &.btn-export {
                         background-color: #2d2d32;
@@ -344,12 +313,12 @@ $warning-text: #eab308;
                     }
 
                     &.btn-new-project {
+                        @include mixin.hover-lift;
                         background-color: $accent-color;
                         color: white;
 
                         &:hover {
                             background-color: $accent-hover;
-                            transform: translateY(-2px);
                         }
                     }
                 }
@@ -370,32 +339,24 @@ $warning-text: #eab308;
             margin-bottom: 1.5rem;
             
             .stat-card {
+                @include mixin.flex-between;
                 min-height: 140px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
 
                 .card-left {
-                    display: flex;
-                    flex-direction: column;
+                    @include mixin.flex-column;
                     gap: .8rem; // increased gap between text elements
 
                     .stat-title {
-                        color: $text-muted;
-                        font-size: 0.95rem;
+                        @include mixin.text-muted(0.95rem);
                         font-weight: 500;
                     }
 
                     .stat-number {
-                        font-size: 40px;
-                        font-weight: 700;
-                        color: white;
-                        letter-spacing: -0.02em;
+                        @include mixin.heading-large;
                     }
 
                     .stat-comparison {
-                        color: $text-muted;
-                        font-size: 0.85rem;
+                        @include mixin.text-muted(0.85rem);
 
                         .comparison-value {
                             color: white;
@@ -427,6 +388,7 @@ $warning-text: #eab308;
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 24px;
+            margin-bottom: 24px;
 
             .large-card, .side-card {
                 min-height: 320px;
@@ -441,11 +403,11 @@ $warning-text: #eab308;
             }
 
             .schedule-item {
+                @include mixin.hover-slide-right;
                 padding: 14px 16px;
                 background: $dark-bg;
                 border-radius: 10px;
                 border: 1px solid $dark-border;
-                transition: all 0.2s;
                 cursor: pointer;
                 font-size: 0.95rem;
                 font-weight: 500;
@@ -453,74 +415,329 @@ $warning-text: #eab308;
                 &:hover {
                     background: $dark-hover;
                     border-color: $accent-color;
-                    transform: translateX(4px);
                 }
+            }
+
+            // Tasks Card (Left)
+            .tasks-card {
+                .card-header {
+                    @include mixin.flex-between;
+                    margin-bottom: 20px;
+                    gap: 16px;
+
+                    h3 {
+                        @include mixin.heading-small;
+                    }
+
+                    .header-actions {
+                        @include mixin.flex-center;
+                        gap: 12px;
+                        flex: 1;
+                        justify-content: flex-end;
+
+                        .search-bar {
+                            @include mixin.flex-center;
+                            gap: 8px;
+                            background-color: #2d2d32;
+                            padding: 8px 12px;
+                            border-radius: 8px;
+                            max-width: 300px;
+
+                            svg {
+                                color: white;
+                                flex-shrink: 0;
+                            }
+
+                            input {
+                                background: transparent;
+                                border: none;
+                                outline: none;
+                                color: white;
+                                width: 100%;
+                                font-size: 0.9rem;
+
+                                &::placeholder {
+                                    color: $text-muted;
+                                }
+                            }
+                        }
+
+                        .filter-btn {
+                            @include mixin.button-bordered(transparent, $dark-border, white, $dark-hover);
+                            
+                            &:hover {
+                                border-color: $accent-color;
+                            }
+
+                            svg {
+                                color: white;
+                            }
+
+                            &:hover {
+                                background-color: $dark-hover;
+                                border-color: $accent-color;
+                            }
+                        }
+                    }
+                }
+
+                .tasks-table {
+                    @include mixin.flex-column;
+
+                    .table-header-row {
+                        display: grid;
+                        grid-template-columns: 2fr 2fr 1fr;
+                        gap: 16px;
+                        border-bottom: 1px solid $dark-border;
+
+                        .table-header-cell {
+                            @include mixin.table-header;
+                        }
+                    }
+
+                    .table-body {
+                        @include mixin.flex-column;
+
+                        .table-row {
+                            @include mixin.table-row;
+                            display: grid;
+                            grid-template-columns: 2fr 2fr 1fr;
+                            gap: 16px;
+
+                            .table-cell {
+                                @include mixin.flex-center;
+                                justify-content: flex-start;
+                                gap: 8px;
+                                color: white;
+                                font-size: 0.95rem;
+
+                                .task-icon {
+                                    color: $text-muted;
+                                    flex-shrink: 0;
+                                }
+
+                                .project-icon {
+                                    color: $accent-color;
+                                    flex-shrink: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Performance Column
+            .performance-card {
+                @include mixin.flex-column;
+
+                .card-header {
+                    @include mixin.flex-between;
+                    margin-bottom: 20px;
+
+                    h3 {
+                        @include mixin.heading-small;
+                    }
+
+                    .period-dropdown {
+                        @include mixin.input-base(#2d2d32, $dark-border);
+                        width: 100px;
+                        padding: 8px 0 8px 12px;
+                        cursor: pointer;
+                        -webkit-appearance: none;
+                        appearance: none;
+
+                        &:hover {
+                            background-color: $dark-hover;
+                        }
+
+                        option {
+                            background-color: #2d2d32;
+                            color: white;
+                        }
+                    }
+                }
+
+                .performance-numbers {
+                    @include mixin.flex-center;
+                    justify-content: flex-start;
+                    gap: 12px;
+                    margin-bottom: 24px;
+
+                    .main-value {
+                        font-size: 24px;
+                        font-weight: 700;
+                        color: white;
+                        letter-spacing: -0.02em;
+                    }
+
+                    .comparison {
+                        @include mixin.flex-center;
+                        gap: 4px;
+
+                        .trend-value {
+                            font-size: 14px;
+                            color: white;
+                            font-weight: 600;
+                        }
+
+                        .trend-label {
+                            @include mixin.text-muted(14px);
+                        }
+                    }
+                }
+
+                .chart-placeholder {
+                    @include mixin.flex-center;
+                    flex: 1;
+                    background: $dark-bg;
+                    border-radius: 8px;
+                    color: $text-muted;
+                    font-size: 0.9rem;
+                }
+            }
+
+            @media (max-width: 1024px) {
+                grid-template-columns: 1fr;
             }
         }
 
         // 5. Bottom Section
         .bottom-section {
             margin-bottom: 24px;
+            .table-header-row {
+                @include mixin.flex-between;
 
-            h3 { 
-                margin-top: 0;
-                margin-bottom: 20px;
-                font-size: 1.25rem;
-                font-weight: 700;
-                letter-spacing: -0.02em;
+                h3 {
+                    @include mixin.heading-small;
+                }
+
+                .header-actions {
+                    @include mixin.flex-center;
+                    gap: 12px;
+                    .search-bar {
+                        @include mixin.flex-center;
+                        gap: 8px;
+                        background-color: #2d2d32;
+                        padding: 8px 12px;
+                        border-radius: 8px;
+                        max-width: 220px;
+                        svg {
+                            color: white;
+                        }
+                        input {
+                            background: transparent;
+                            border: none;
+                            outline: none;
+                            color: white;
+                            width: 100%;
+                            font-size: 0.9rem;
+                            &::placeholder {
+                                color: $text-muted;
+                            }
+                        }
+                    }
+                    .filter-btn {
+                        @include mixin.button-bordered(transparent, $dark-border, white, $dark-hover);
+                        svg { color: white; }
+                        &:hover { border-color: $accent-color; }
+                    }
+                }
             }
-            
-            .tasks-table {
+            .projects-table {
                 width: 100%;
-                border-collapse: collapse;
-
-                thead tr {
-                    color: $text-muted;
+                display: flex;
+                flex-direction: column;
+                .table-header-row {
+                    display: grid;
+                    grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr;
+                    gap: 16px;
                     border-bottom: 1px solid $dark-border;
-                    text-align: left;
-
-                    th {
-                        padding: 12px 16px;
-                        font-weight: 600;
-                        font-size: 0.9rem;
-                        text-transform: uppercase;
-                        letter-spacing: 0.05em;
+                    padding: 12px 16px;
+                    .table-header-cell {
+                        @include mixin.table-header;
                     }
                 }
+                .table-body {
+                    display: flex;
+                    flex-direction: column;
+                    
+                    .table-row {
+                        display: grid;
+                        grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr;
+                        gap: 16px;
+                        padding: 16px 16px;
+                        border-bottom: 1px solid $dark-border;
+                        align-items: center;
+                        &:last-child { border-bottom: none; }
+                        .table-cell {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            color: white;
+                            font-size: 0.95rem;
+                            &.project-name {
+                                gap: 12px;
+                                .project-icon {
+                                    @include mixin.flex-center;
+                                    width: 36px;
+                                    height: 36px;
+                                    border-radius: 8px;
+                                    background: #23234a;
+                                    color: white;
+                                }
+                            }
+                            &.owner-cell {
+                                gap: 10px;
+                                .owner-avatar {
+                                    width: 32px;
+                                    height: 32px;
+                                    border-radius: 50%;
+                                    object-fit: cover;
+                                    border: 2px solid $dark-border;
+                                }
+                                span {
+                                    color: white;
+                                    font-size: 0.95rem;
+                                }
+                            }
+                        }
+                        .status-badge {
+                            @include mixin.badge-base;
+                            font-size: 0.9rem;
+                            &.status-inprogress {
+                                background: linear-gradient(90deg, #6366f1, #818cf8);
+                                color: white;
+                            }
+                            &.status-completed {
+                                background: linear-gradient(90deg, #22c55e, #16a34a);
+                                color: white;
+                            }
+                            &.status-onhold {
+                                background: #3A3A3A;
+                                color: #bdbdbd;
+                            }
+                        }
+                        .progress-bar-segments {
+                            display: flex;
+                            gap: 2px;
 
-                tbody tr {
-                    border-bottom: 1px solid $dark-border;
-                    transition: background 0.2s;
+                            .bar-segment {
+                                width: 5px;
+                                height: 18px;
+                                border-radius: 2px;
+                                background: #2a2a35;
 
-                    &:hover {
-                        background: $dark-bg;
-                    }
-
-                    &:last-child {
-                        border-bottom: none;
-                    }
-
-                    td {
-                        padding: 16px;
-                        font-size: 0.95rem;
-                    }
-                }
-
-                .status-badge {
-                    padding: 6px 12px;
-                    border-radius: 16px;
-                    font-size: 0.85rem;
-                    font-weight: 600;
-                    display: inline-block;
-
-                    &.status-completed {
-                        background: $success-bg;
-                        color: $success-text;
-                    }
-
-                    &.status-progress {
-                        background: $warning-bg;
-                        color: $warning-text;
+                                &.inprogress {
+                                    background: linear-gradient(90deg, #6366f1, #818cf8);
+                                }
+                                &.completed {
+                                    background: linear-gradient(90deg, #22c55e, #16a34a);
+                                }
+                                &.onhold {
+                                    background: #3A3A3A;
+                                }
+                            }
+                        }
                     }
                 }
             }
