@@ -17,8 +17,8 @@ import {
     Clock,
     TrendingUp,
     Users,
-    Sun,
-    Moon
+    File,
+    Plus
 } from "lucide-react";
 import Card from "../components/Card";
 import ThemeToggle from "../ThemeToggle";
@@ -133,8 +133,22 @@ export default function Dashboard() {
 
                 {/* 2.2 Welcome Section */}
                 <div className="welcome-section">
-                    <h2>Welcome back, John!</h2>
-                    <p>Here's what's happening with your projects today.</p>
+                    <div className="welcome-text">
+                        <h2>Welcome back, John Connor! 👋</h2>
+                        <p>
+                            <span className="highlight">4</span> Tasks Due Today, <span className="highlight">2</span> Overdue Tasks, <span className="highlight">8</span> Upcoming Deadlines (This Week)
+                        </p>
+                    </div>
+                    <div className="welcome-actions">
+                        <button className="btn-export">
+                            <File size={18} />
+                            <span>Export</span>
+                        </button>
+                        <button className="btn-new-project">
+                            <Plus size={18} />
+                            <span>New Project</span>
+                        </button>
+                    </div>
                 </div>
 
                 {/* 2.3 Four Stats Cards */}
