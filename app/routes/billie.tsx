@@ -1,8 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap"; // Assuming type generation, otherwise optional
-import "../styles/billie.scss";
 import type { Route } from "./+types/home";
+import SnowFall from "~/components/SnowFall";
+import "../styles/billie.scss";
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -16,6 +17,7 @@ export default function Billie() {
     const textRef = useRef<HTMLHeadingElement>(null);
     const cursorRef = useRef<HTMLDivElement>(null);
     const trailRef = useRef<HTMLDivElement>(null);
+    const [opacity, setOpacity] = useState(false);
     
     // Refs for tracking mutable state without re-renders
     const lastPos = useRef({ x: 0, y: 0 });
@@ -31,10 +33,10 @@ export default function Billie() {
                 ease: "power3.out"
             }, 0)
             .to(textRef.current, {
-                backgroundPosition: "0% 0", // Slides the gradient from gray (100%) to white (0%)
+                backgroundPosition: "0% 0",
                 duration: 1.5,
                 ease: "power2.inOut"
-            }, 0.2); // Slight offset
+            }, 0.2);
         }
 
         // 2. Cursor Follower Setup
@@ -65,21 +67,15 @@ export default function Billie() {
 
             const el = document.createElement("div");
             el.className = "trail-box";
-            // Explicit styles to ensure visibility
             el.style.position = "absolute";
             el.style.backgroundColor = "#d3d3d3"; 
             
-            // Random dimensions (e.g., 100px - 200px)
             const size = gsap.utils.random(250, 250); 
-            
-            // Position centering
             el.style.width = `${size}px`;
-            el.style.height = `${size}px`; // Aspect ratio bit rectangular
+            el.style.height = `${size}px`;
             el.style.left = `${x - size}px`;
             el.style.top = `${y - (size * 0.75) / 2}px`;
             
-            // Initial state logic for GSAP
-            // User requested: "block of images show up... scaling... disappears"
             gsap.set(el, { scale: 0, opacity: 0 });
             
             trailRef.current.appendChild(el);

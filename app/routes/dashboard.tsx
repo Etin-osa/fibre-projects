@@ -1,6 +1,4 @@
 import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import "../styles/dashboard.scss";
 import {
     Bell,
